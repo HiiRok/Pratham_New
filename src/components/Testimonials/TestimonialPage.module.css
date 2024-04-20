@@ -1,0 +1,20 @@
+/* TestimonialPage.module.css */
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 50px;
+
+  }
+  
+  .heading {
+    text-align: center;
+    color: navy;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-size: 2rem;
+  }
+  
+  .testimonials {
+    
+  }
+  

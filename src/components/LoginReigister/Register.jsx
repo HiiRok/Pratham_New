@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 import { Button, TextField, Grid, Paper, Typography, Link, makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(3),
-    backgroundColor: theme.palette.common.background,
-  },
-  form: {
-    width: '300px',
-    margin: 'auto',
-  },
-  input: {
-    border: '1px solid #ccc',
-    padding: theme.spacing(1),
-    marginBottom: theme.spacing(2),
-  },
-  submit: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.common.white,
-    padding: theme.spacing(1, 2),
-    marginTop: theme.spacing(2),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     marginTop: theme.spacing(8),
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//     padding: theme.spacing(3),
+//     backgroundColor: theme.palette.common.background,
+//   },
+//   form: {
+//     width: '300px',
+//     margin: 'auto',
+//   },
+//   input: {
+//     border: '1px solid #ccc',
+//     padding: theme.spacing(1),
+//     marginBottom: theme.spacing(2),
+//   },
+//   submit: {
+//     backgroundColor: theme.palette.primary.main,
+//     color: theme.palette.common.white,
+//     padding: theme.spacing(1, 2),
+//     marginTop: theme.spacing(2),
+//   },
+// }));
 
 const Register = () => {
   const classes = useStyles();

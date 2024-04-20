@@ -15,6 +15,7 @@
     overflow: hidden;
 }
 .discourse_card>img{
+    min-width: 200px;
     height: 100%;
     object-fit: contain;
 }

@@ -1,7 +1,8 @@
+import styles from "./Player.module.css"
 function PlayerCourse({ setVideo, videoLink, videoTitle, videoDuration }) {
   return (
     <div
-      className="player_course_content"
+      className={styles.player_course_content}
       onClick={() => {
         setVideo(videoLink);
       }}

@@ -1,0 +1,23 @@
+/* GalleryPage.module.css */
+
+.galleryPage {
+    padding: 5px;
+    margin-bottom: 130px;
+  }
+  .galleryPage h1 {
+    text-transform: uppercase;
+    text-align: center;
+    color: navy;
+    text-decoration:underline ;
+    margin-bottom: 50px;
+
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Add more styles as needed */
+  

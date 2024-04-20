@@ -1,15 +1,17 @@
 import { Button } from "@mui/material";
-import "./DiscourseCard.css";
+import discourseCss from "./DiscourseCard.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const DiscourseCard = ({ img, id }) => {
+  const navigate = useNavigate();
   return (
-    <div className="discourse_card_container">
-      <div className="discourse_card">
+    <div className={discourseCss.discourse_card_container}>
+      <div className={discourseCss.discourse_card}>
         <img src={img} alt="course image" />
         <div>
           <Link to={`/discourses/${id}`}>
-            <h1>Course Name</h1>
+            <h1>Discourse Name</h1>
           </Link>
           <p>
             Course Description Lorem ipsum dolor sit amet consectetur
@@ -18,8 +20,11 @@ const DiscourseCard = ({ img, id }) => {
             ipsum rerum illo! Eaque id officia saepe nobis recusandae maxime
             voluptatibus quos! lorem34
           </p>
-          <Button variant="contained" color="success">
-            Register
+          <Button variant="contained" color="success" 
+          onClick={() => {
+              navigate(`/discourses/${id}`);
+            }}>
+            View
           </Button>
         </div>
       </div>

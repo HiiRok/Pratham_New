@@ -1,12 +1,18 @@
-.discourse{
-    padding: 0  1rem;
+.discourse {
+  display: flex;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next row */
+  justify-content: center; /* Center the content horizontally */
 }
-.discourse>h1{
+
+  
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .title h1 {
+    color: navy;
     text-transform: uppercase;
-    text-align: center;
-    font-size: 3rem;
-}
-.discourse>div{
-    width: fit-content;
-    margin: 1rem auto;
-}
+    text-decoration: underline;
+  }
+

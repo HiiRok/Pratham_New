@@ -1,40 +1,16 @@
 import React, { useState } from 'react';
 import { Button, TextField, Grid, Paper, Typography, Link, Fade, makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: theme.spacing(3),
-    backgroundColor: theme.palette.common.background,
-  },
-  form: {
-    width: '300px',
-    margin: 'auto',
-  },
-  input: {
-    border: '1px solid #ccc',
-    padding: theme.spacing(1),
-    marginBottom: theme.spacing(2),
-  },
-  submit: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.common.white,
-    padding: theme.spacing(1, 2),
-    marginTop: theme.spacing(2),
-  },
-}));
+
 
 const Login = () => {
   const classes = useStyles();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = (event) => {
-    if (event.target.name === 'username') {
-      setUsername(event.target.value);
+    if (event.target.email === 'email') {
+      setEmail(event.target.value);
     } else {
       setPassword(event.target.value);
     }
@@ -60,9 +36,9 @@ const Login = () => {
               type='email'
               className={classes.input}
               fullWidth
-              name='username'
+              name='email'
               variant='outlined'
-              value={username}
+              value={email}
               onChange={handleChange}
               required
               autoFocus
