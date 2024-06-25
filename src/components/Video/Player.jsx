@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import playercss from "./Player.module.css";
 import PlayerCourse from "./PlayerCourse";
 import LoadingSpinner from "./LoadingSpinner";
+import VideoPlayer from "./VideoPlayer";
 
-const Player = () => {
+const Player = ( {courseName}) => {
   const [videos, setVideos] = useState([]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -30,69 +31,76 @@ const Player = () => {
       {
         "id": 1,
         "title": "Introduction to React",
-        "duration": 12,
-        "videoUrl": "https://example.com/videos/intro-to-react.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       },
       {
         "id": 2,
         "title": "React Components",
-        "duration": 18,
-        "videoUrl": "https://example.com/videos/react-components.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
       },
       {
         "id": 3,
         "title": "React State Management",
-        "duration": 25,
-        "videoUrl": "https://example.com/videos/react-state-management.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       },
       {
         "id": 4,
         "title": "React Hooks",
-        "duration": 30,
-        "videoUrl": "https://example.com/videos/react-hooks.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       },
       {
         "id": 5,
         "title": "React Router",
-        "duration": 20,
-        "videoUrl": "https://example.com/videos/react-router.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       },
       {
         "id": 6,
         "title": "React and Redux",
-        "duration": 35,
-        "videoUrl": "https://example.com/videos/react-redux.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       },
       {
         "id": 7,
         "title": "React Testing",
-        "duration": 25,
-        "videoUrl": "https://example.com/videos/react-testing.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       },
       {
         "id": 8,
         "title": "React Performance",
-        "duration": 18,
-        "videoUrl": "https://example.com/videos/react-performance.mp4"
+        "duration": 744,
+        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
       }
     ])
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentVideoIndex,setCurrentVideoIndex]);
+
+  function handleNextVideo(){
+    if(currentVideoIndex < videos.length - 1){
+      setCurrentVideoIndex(currentVideoIndex + 1);
+    }
+  }
+
+  function handleVideoClick(index){
+    if(index < videos.length){
+      setCurrentVideoIndex(index);
+    }
+  }
+
   return (
     <div className={playercss.player}>
-      <div>
-        <iframe
-          src={videos[currentVideoIndex]?.videoUrl || ""}
-          width="100%"
-          height="380"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          title="Video Player"
-        ></iframe>
-      </div>
+      <VideoPlayer key={videos[currentVideoIndex]?.id} durVal={videos[currentVideoIndex]?.duration} videoUrl={videos[currentVideoIndex]?.videoUrl} onNextVid={handleNextVideo} />
       <div>
         <h2 className={playercss.player_course_heading} style={{ marginBottom: "1rem" }}>
-          Course Content
+          {courseName}
         </h2>
         <div>
           {videos.map((video, index) => (
@@ -100,10 +108,7 @@ const Player = () => {
               key={index}
               videoTitle={video.title}
               videoDuration={video.duration}
-              setVideo={() => {
-                setCurrentVideoIndex(index);
-                setIsPlaying(true);
-              }}
+              setVideo={() => handleVideoClick(index)}
               videoLink={video.videoUrl}
             />
           ))}

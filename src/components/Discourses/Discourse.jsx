@@ -1,47 +1,30 @@
-import "./Discourse.css";
-import DiscourseCard from "../MyCourses/DiscourseCard";
-import img1 from "../../assets/chandiPaath.jpg";
-import img2 from "../../assets/Divine-mother-22.08.2023-OK.jpg";
-import img3 from "../../assets/BHAJAGOVINDAM-OK.png";
-import { DiscoursesCard } from "./DiscoursesCard";
+import React, { useState, useEffect } from 'react';
+// import "./Discourse.css";
+// import DiscoursesCard from "./DiscourseCard";
 
 const Discourse = () => {
+  const [courses, setCourses] = useState([]);
+
+  // useEffect(() => {
+  //   fetch('http:/localhost/api/course/course_cat') 
+  //     .then(response => response.json())
+  //     .then(data => setCourses(data))
+  //     .catch(error => console.error('Error fetching courses:', error));
+  // }, []);
+
   return (
     <>
-    <div className="title"><h1>Discourses</h1></div>
-      
-      <div  className="discourse">
-        <DiscoursesCard 
-        title='First Course'
-        imageUrl={img3}
-        body='Lorem ipsum dolor sit amet, consetur adipiscing elit.'
-         />
-        <DiscoursesCard 
-        title='First Course'
-        imageUrl={img3}
-        body='Lorem ipsum dolor sit amet, consetur adipiscing elit.'
-         />
-        <DiscoursesCard 
-        title='First Course'
-        imageUrl={img3}
-        body='Lorem ipsum dolor sit amet, consetur adipiscing elit.'
-         />
-        <DiscoursesCard 
-        title='First Course'
-        imageUrl={img3}
-        body='Lorem ipsum dolor sit amet, consetur adipiscing elit.'
-         />
-        <DiscoursesCard 
-        title='First Course'
-        imageUrl={img3}
-        body='Lorem ipsum dolor sit amet, consetur adipiscing elit.'
-         />
-        <DiscoursesCard 
-        title='First Course'
-        imageUrl={img3}
-        body='Lorem ipsum dolor sit amet, consetur adipiscing elit.'
-         />
-      </div>
+      {/* <div className="title"><h1>Discourses</h1></div>
+      <div className="discourse">
+        {courses.map(course => (
+          <DiscoursesCard 
+            key={course.id} 
+            title={course.title}
+            imageUrl={course.imageUrl}
+            body={course.body}
+          />
+        ))}
+      </div> */}
     </>
   );
 };

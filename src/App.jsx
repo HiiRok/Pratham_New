@@ -20,9 +20,9 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar isLoggedIn={true} />
+        <Navbar isLoggedIn={false}/>
         <Routes>
-          <Route isLoggedIn={true} path="/" Component={Home} />
+          <Route isLoggedIn={false} path="/" Component={Home} />
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />
           <Route path="/discourses" Component={Discourse} />
@@ -34,13 +34,13 @@ function App() {
           <Route path="/mycourses" Component={MyCourses} />
           <Route path="/userProfile" Component={UserProfile} />
           <Route path="/about" Component={about} />
-          {/* <Route path="*" Component={Home} status={404} /> */}
+          <Route path="*" Component={Home} status={404} />
           
         </Routes>
         <footer className={styles.footer}>
-        <div className={styles.container}>
+      
           <p>Copyright &copy; 2024 PrasthanYatnam.org. All rights reserved.</p>
-        </div>
+
         </footer>
       </Router>
     </>

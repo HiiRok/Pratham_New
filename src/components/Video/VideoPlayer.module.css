@@ -1,0 +1,10 @@
+.playerDiv {
+  width: 100%;
+  position: relative;
+  opacity: 0; /* Start with opacity 0 */
+  transition: opacity 1s ease; /* Smooth transition over 0.3 seconds */
+}
+
+.playerDiv.loaded {
+  opacity: 1; /* Opacity when loaded */
+}

@@ -29,6 +29,7 @@ const Poem = () => {
                 onClick={() => handlePoemClick(index)}
               >
                 <h2 className={poemStyles.poemTitle}>{poem.title}</h2>
+                <p className={poemStyles.author}>- author</p>
               </div>
             ))}
           </div>
@@ -43,9 +44,11 @@ const Poem = () => {
           <h1 className={poemStyles.poemTitle}>
             {poemData[selectedPoemIndex].title}
           </h1>
-          <pre className={poemStyles.poemContent}>
-            {poemData[selectedPoemIndex].content}
-          </pre>
+          <div className={poemStyles.poemContent}>
+              {poemData[selectedPoemIndex].content.split('\n').map((line, index) => (
+                <p key={index} className={poemStyles.poemLine}>{line}</p>
+              ))}
+          </div>
         </div>
         </>
 

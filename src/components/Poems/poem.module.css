@@ -3,7 +3,7 @@
 
 
 .container {
-    background-image: url('data:image/jpeg;base64,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');
+    background-image: url('../../assets/poem_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -12,6 +12,8 @@
     flex-direction: column;
     align-items: center;
     min-height: 440px;
+    
+    
   }
   
   .heading {
@@ -31,7 +33,7 @@
   }
   
   .poem {
-    background-color: rgba(152, 128, 128, 0);
+    background-color: rgb(255, 255, 255);
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -44,35 +46,39 @@
   }
   
   .poemTitle {
-    margin-left: 5rem;
+    margin-left: 1rem;
     color: navy;
-    font-size: 1.5rem; /* Increase font size for better readability */
-    margin-bottom: 2rem; /* Increase bottom margin for better spacing */
-    font-weight: bold; /* Add bold font weight for emphasis */
-     /* Convert text to uppercase */
-    /* Add letter spacing for better readability */
+    font-size: 1.5rem; 
+    margin-bottom: 2rem;
+    font-weight: bold; 
     text-transform: uppercase;
   }
   
   
   .poemDetail {
-    background-color: rgba(255, 255, 255, 0);
+    background-image: url('../../assets/poem_note_back.jpg');
+    background-size: 900px 900px;
+    background-position:center;
+    background-repeat: repeat-y;
+    background-position-y: -20px;
+    background-position-x: -40px;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     max-width: 800px;
-    max-height: 300px;
+    box-shadow: -8px 8px 8px -6px rgba(53, 52, 52, 0.645);
     overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer and Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+
   }
   
-  /* Chrome, Safari, and Opera */
+
   .poemDetail::-webkit-scrollbar {
     display: none;
   }
   
-  /* Scroll animation */
+
   .poemDetail {
     scroll-behavior: smooth;
     transition: scrollbar-color 0.3s ease-in-out;
@@ -87,9 +93,27 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
   
-  .poemContent {
-    white-space: pre-wrap; /* Preserve line breaks */
+  .poemDetail > .poemTitle{
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 30px;
   }
+
+  .poemContent {
+    white-space: pre-wrap; 
+    
+  }
+
+  .poemContent p {
+    text-align: center; 
+    font-family: Georgia, "Times New Roman", serif;
+    margin-left: -40px;
+}
+
+  .poemLine {
+    margin: 0; 
+    line-height: 1.7; 
+}
 
   .relativeContainer {
     position: relative;
@@ -121,3 +145,11 @@
     font-style: normal;
     text-align: justify;
   }
+
+
+
+.author{
+  font-style: italic;
+  color: rgb(65, 67, 68);
+  margin-left: 80px;
+}

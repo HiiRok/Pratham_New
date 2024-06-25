@@ -19,7 +19,7 @@ const Home = ({isLoggedIn}) => {
         </Button>
         </>        
        )}
-       <Button variant="contained" sx={{ width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
+       <Button variant="contained" sx={{  width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
             backgroundColor: "darkblue" 
           } }} className="home_button"  color="success" onClick={()=>{navigate("/register")}}>
           Become a member
