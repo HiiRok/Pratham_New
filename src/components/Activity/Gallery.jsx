@@ -49,7 +49,7 @@ const Gallery = () => {
 
   return (
     <div className={styles.galleryPage}>
-      <h1>Gallery Page</h1>
+      <h1></h1>
       <div className={styles.gallery}>
         {galleries.map((gallery) => (
           <GalleryItem key={gallery.id} gallery={gallery} onClick={() => handleGalleryItemClick(gallery)} />

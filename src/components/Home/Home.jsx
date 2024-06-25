@@ -11,19 +11,31 @@ const Home = ({isLoggedIn}) => {
       <div className="home_image">
       <h1 className="quote">" The need not to journey,to sit still,is the greatest journey."<h2 className="quote_author">-Raina Bhattacharjee.</h2></h1>
       
-       {isLoggedIn && (
+       {!isLoggedIn && (
         <>
         <Button variant="contained" sx={{ width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
             backgroundColor: "darkblue"} }} className="home_button" onClick={()=>{navigate("/login")}}>
           LOGIN
         </Button>
-        </>        
-       )}
-       <Button variant="contained" sx={{  width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
+        <Button variant="contained" sx={{  width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
             backgroundColor: "darkblue" 
           } }} className="home_button"  color="success" onClick={()=>{navigate("/register")}}>
           Become a member
         </Button>
+        </>        
+       )}
+
+       {isLoggedIn && (
+        <>
+          <Button variant="contained" sx={{  width: "15rem","fontWeight":"800", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
+              backgroundColor: "darkblue" 
+            } }} className="home_button"  color="success" onClick={()=>{navigate("/donationr")}}>
+            Donate for a Cause
+          </Button>
+        </>
+       )}
+
+
         
       </div>
       <div className="home_grid">

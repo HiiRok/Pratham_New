@@ -1,29 +1,35 @@
+import React from "react";
 import { Button } from "@mui/material";
-import discourseCss from "./DiscourseCard.module.css";
+import styles from "./DiscourseCard.module.css";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const DiscourseCard = ({ img, id }) => {
   const navigate = useNavigate();
+
   return (
-    <div className={discourseCss.discourse_card_container}>
-      <div className={discourseCss.discourse_card}>
-        <img src={img} alt="course image" />
-        <div>
-          <Link to={`/discourses/${id}`}>
-            <h1>Discourse Name</h1>
+    <div className={styles.discourse_card_container}>
+      <div className={styles.discourse_card}>
+        <img src={img} alt="course image" className={styles.image} />
+        <div className={styles.content}>
+          <Link to={`/discourses/${id}`} className={styles.link}>
+            <h1 className={styles.title}>Discourse Name</h1>
           </Link>
-          <p>
+          <p className={styles.description}>
             Course Description Lorem ipsum dolor sit amet consectetur
             adipisicing elit. Eveniet hic reprehenderit a perspiciatis porro
             obcaecati, beatae pariatur deserunt odit praesentium nostrum ab
             ipsum rerum illo! Eaque id officia saepe nobis recusandae maxime
             voluptatibus quos! lorem34
           </p>
-          <Button variant="contained" color="success" 
-          onClick={() => {
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => {
               navigate(`/discourses/${id}`);
-            }}>
+            }}
+            className={styles.button}
+          >
             View
           </Button>
         </div>
@@ -31,8 +37,10 @@ const DiscourseCard = ({ img, id }) => {
     </div>
   );
 };
+
 DiscourseCard.propTypes = {
   img: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
+
 export default DiscourseCard;

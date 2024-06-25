@@ -20,7 +20,7 @@ const Poem = () => {
     <div className={poemStyles.container}>
       {selectedPoemIndex === null ? (
         <>
-          <h1 className={poemStyles.heading}>Poems</h1>
+          <h1 className={poemStyles.heading}></h1>
           <div className={poemStyles.poemList}>
             {poemData.map((poem, index) => (
               <div

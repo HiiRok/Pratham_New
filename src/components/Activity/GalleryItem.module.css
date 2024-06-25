@@ -7,6 +7,9 @@
     cursor: pointer;
     transition: 0.3s;
     animation: ease-in-out fadeInUp 1s;
+    height:150px;
+    width: 200px;
+    margin-left: 40px;
   }
   
   .galleryItem:hover {

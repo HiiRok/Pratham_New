@@ -1,6 +1,4 @@
-// TestimonialPage.js
 import React, { useState, useEffect } from 'react';
-import Testimonial from './Testimonial';
 import testimonialPageStyles from './TestimonialPage.module.css';
 
 const TestimonialPage = () => {
@@ -20,58 +18,36 @@ const TestimonialPage = () => {
       message: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     },
     {
-        id: 2,
-        name: 'Jane Smith',
-        avatar: 'https://via.placeholder.com/150',
-        message: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-      },
-      {
-        id: 2,
-        name: 'Jane Smith',
-        avatar: 'https://via.placeholder.com/150',
-        message: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-      },
-      {
-        id: 2,
-        name: 'Jane Smith',
-        avatar: 'https://via.placeholder.com/150',
-        message: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-      },
-      {
-        id: 2,
-        name: 'Jane Smith',
-        avatar: 'https://via.placeholder.com/150',
-        message: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-      },
-      
+      id: 3,
+      name: 'Mark Johnson',
+      avatar: 'https://via.placeholder.com/150',
+      message: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+    },
+    {
+      id: 4,
+      name: 'Emily Davis',
+      avatar: 'https://via.placeholder.com/150',
+      message: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    }
     // Add more dummy testimonials as needed
   ];
 
   useEffect(() => {
-    // Fetch testimonials data from an API or define it locally
-    // Example:
-    // const fetchTestimonials = async () => {
-    //   try {
-    //     const response = await fetch('https://api.example.com/testimonials');
-    //     const data = await response.json();
-    //     setTestimonials(data);
-    //   } catch (error) {
-    //     console.error('Error fetching testimonials:', error);
-    //   }
-    // };
-
-    // fetchTestimonials();
-    setTestimonials(dummyTestimonials)
+    // Simulating API call to fetch testimonials
+    setTimeout(() => {
+      setTestimonials(dummyTestimonials);
+    }, 1000); // Delay added to simulate asynchronous fetch
   }, []);
 
   return (
     <div className={testimonialPageStyles.container}>
-      <h2 className={testimonialPageStyles.heading}>Testimonials</h2>
-      <div className={testimonialPageStyles.testimonials}>
-        {testimonials.map((testimonial) => (
-          <Testimonial key={testimonial.id} testimonial={testimonial} />
-        ))}
-      </div>
+      {testimonials.map((testimonial) => (
+        <div key={testimonial.id} className={testimonialPageStyles.card}>
+          <img src={testimonial.avatar} alt={testimonial.name} className={testimonialPageStyles.avatar} />
+          <h3 className={testimonialPageStyles.name}>{testimonial.name}</h3>
+          <p className={testimonialPageStyles.message}>{testimonial.message}</p>
+        </div>
+      ))}
     </div>
   );
 };

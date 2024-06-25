@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Button, TextField, Grid, Paper, Typography, Link, Fade, makeStyles } from '@material-ui/core';
-import {useNavigate} from 'react-router-dom'
-
+// src/components/LoginReigister/Login.js
+import React, { useState, useContext } from 'react';
+import { Button, TextField, Grid, Paper, Typography, Link, CircularProgress, makeStyles } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -10,89 +11,86 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     padding: theme.spacing(3),
-    backgroundColor: theme.palette.common.background,
+    backgroundColor: theme.palette.background.paper,
   },
   form: {
-    width: '300px',
-    margin: 'auto',
+    width: '100%',
+    marginTop: theme.spacing(1),
   },
   input: {
-    border: '1px solid #ccc',
-    padding: theme.spacing(1),
     marginBottom: theme.spacing(2),
   },
   submit: {
+    margin: theme.spacing(3, 0, 2),
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
-    padding: theme.spacing(1, 2),
-    marginTop: theme.spacing(2),
+  },
+  errorText: {
+    color: theme.palette.error.main,
+    marginTop: theme.spacing(1),
   },
 }));
 
 const Login = () => {
-
-  
-  const navigate= useNavigate();	
+  const navigate = useNavigate();
   const classes = useStyles();
+  const { login } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (event) => {
-    if (event.target.name === 'username') {
-      setUsername(event.target.value);
+    const { name, value } = event.target;
+    if (name === 'username') {
+      setUsername(value);
     } else {
-      setPassword(event.target.value);
+      setPassword(value);
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-	  fetch('http://localhost:3001/api/user/login', {
-		
-		  method: 'POST',
-		  mode: 'cors',
-		  body: JSON.stringify({
-			"email": event.target.username.value,
-			"password": event.target.password.value,
-		  }),
-		  headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-		  }
+    setLoading(true);
+    setError('');
 
-	  }).then(response=> {
-		  if(response.ok)
-			  alert('Login Successfull')
-		return response.json()
-	  }).then(data=>{
-		
-		  if(data.token){
-			localStorage.setItem('prasthan_yatna_jwt', data.token);
-
-			navigate("/");
-			  //const mydata= JSON.parse(localStorage.getItem('myData'));
-			  //console.log(mydata.token)
-			  
-
-		  }
-		  else{
-			  
-			  console.log(data.keyValue)
-			alert("wrong credentials : " + data.keyValue + "\n try Again")
-
-		  }
-
-	  }).catch(error=>{
-		console.log('Error in Login: ',error)
-	  });
+    fetch('http://localhost:3001/api/user/login', {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify({
+        email: username,
+        password: password,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(response => {
+      setLoading(false);
+      if (response.ok) {
+        return response.json();
+      } else {
+        return response.json().then(err => Promise.reject(err));
+      }
+    })
+    .then(data => {
+      if (data.token) {
+        login(data.token);
+        navigate("/");
+      }
+    })
+    .catch(error => {
+      setError('Login failed. Please check your credentials and try again.');
+    });
   };
 
   return (
-    <Grid container spacing={0} justify='center' direction='row'>
+    <Grid container spacing={0} justifyContent='center' direction='row'>
       <Grid item>
         <Paper variant='elevation' elevation={2} className={classes.paper}>
           <Typography component='h1' variant='h5'>
-            Login in
+            Log in
           </Typography>
           <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
@@ -106,6 +104,7 @@ const Login = () => {
               onChange={handleChange}
               required
               autoFocus
+              error={!!error}
             />
             <TextField
               label='Password'
@@ -117,13 +116,21 @@ const Login = () => {
               value={password}
               onChange={handleChange}
               required
+              error={!!error}
             />
+            {error && (
+              <Typography variant='body2' className={classes.errorText}>
+                {error}
+              </Typography>
+            )}
             <Button
               variant='contained'
               className={classes.submit}
               type='submit'
+              fullWidth
+              disabled={loading}
             >
-              Submit
+              {loading ? <CircularProgress size={24} /> : 'Submit'}
             </Button>
           </form>
           <Link href='#' variant='body2'>

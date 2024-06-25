@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Button, TextField, Grid, Paper, Typography, Link, makeStyles } from '@material-ui/core';
-import {useNavigate} from 'react-router-dom'
+// src/components/LoginReigister/Register.js
+import React, { useState, useContext } from 'react';
+import { Button, TextField, Grid, Paper, Typography, Link, makeStyles, MenuItem } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -28,18 +30,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 const Register = () => {
-
-
-	const navigate = useNavigate();	
-	
   const classes = useStyles();
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(AuthContext);
+
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [username, setUsername] = useState('');
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState('');
+  const [organization, setOrganization] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -51,119 +54,156 @@ const Register = () => {
       setPassword(value);
     } else if (name === 'confirmPassword') {
       setConfirmPassword(value);
+    } else if (name === 'age') {
+      setAge(value);
+    } else if (name === 'gender') {
+      setGender(value);
+    } else if (name === 'organization') {
+      setOrganization(value);
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrorMessage('');
 
-	   var flag=0;
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
 
-	fetch('http://localhost:3001/api/user/register/v1',{
-		method: 'POST',
-		mode: 'cors',
-		body: JSON.stringify({
-			"username": event.target.username.value,
-			"email": event.target.email.value,
-			"password": event.target.password.value,
-		}),
+    try {
+      const response = await fetch('http://localhost:3001/api/user/register/v1', {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          age,
+          gender,
+          organization
+        }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
 
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-		},
-	}).then(response=> {
-		if(response.status===500)
-		{
-			flag=1;
-		}else
-			alert("Registration Successfull!")
-		return	response.json()
-	})
-	  .then(data=> {
+      if (response.status === 500) {
+        throw new Error('Server error');
+      }
 
-		  if(flag){
-			
-			alert("Wrong Credentials : " + Object.keys(data.keyValue) + " \n Try Registering Again")
-			console.log(data.keyValue);
-		  }else{
-			
-			  console.log(data.token)
-			  // Assuming `token` is your JWT received from the server
-				
-			  localStorage.setItem('prasthan_yatna_jwt', data.token);
-			  navigate("/");
-		  }
+      const data = await response.json();
 
-	  }).catch((error)=>{
-		  
-		console.log('Error in handle Submit: ', error);
-	  });
+      if (response.ok) {
+        localStorage.setItem('prasthan_yatna_jwt', data.token);
+        setIsLoggedIn(true);
+        navigate('/');
+      } else {
+        setErrorMessage(`Registration failed: ${Object.keys(data.keyValue)} already exists.`);
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred during registration. Please try again.');
+      console.error('Error in handleSubmit:', error);
+    }
   };
 
   return (
-    <Grid container spacing={0} justify='center' direction='row'>
+    <Grid container spacing={0} justify="center" direction="row">
       <Grid item>
-        <Paper variant='elevation' elevation={2} className={classes.paper}>
-          <Typography component='h1' variant='h5'>
+        <Paper variant="elevation" elevation={2} className={classes.paper}>
+          <Typography component="h1" variant="h5">
             Register
           </Typography>
-          <form className={classes.form} onSubmit={handleSubmit} id='registrationForm'>
+          <form className={classes.form} onSubmit={handleSubmit} id="registrationForm">
             <TextField
-              label='Username'
-              type='username'
+              label="Username"
+              type="username"
               className={classes.input}
               fullWidth
-              name='username'
-              variant='outlined'
+              name="username"
+              variant="outlined"
               value={username}
               onChange={handleChange}
               required
               autoFocus
             />
             <TextField
-              label='Email'
-              type='email'
+              label="Email"
+              type="email"
               className={classes.input}
               fullWidth
-              name='email'
-              variant='outlined'
+              name="email"
+              variant="outlined"
               value={email}
               onChange={handleChange}
               required
-              autoFocus
             />
             <TextField
-              label='Password'
-              type='password'
+              label="Password"
+              type="password"
               className={classes.input}
               fullWidth
-              name='password'
-              variant='outlined'
+              name="password"
+              variant="outlined"
               value={password}
               onChange={handleChange}
               required
             />
             <TextField
-              label='Confirm Password'
-              type='password'
+              label="Confirm Password"
+              type="password"
               className={classes.input}
               fullWidth
-              name='confirmPassword'
-              variant='outlined'
+              name="confirmPassword"
+              variant="outlined"
               value={confirmPassword}
               onChange={handleChange}
               required
             />
-            <Button
-              variant='contained'
-              className={classes.submit}
-              type='submit'
+            <TextField
+              label="Age"
+              type="number"
+              className={classes.input}
+              fullWidth
+              name="age"
+              variant="outlined"
+              value={age}
+              onChange={handleChange}
+              required
+            />
+            <TextField
+              label="Gender"
+              select
+              className={classes.input}
+              fullWidth
+              name="gender"
+              variant="outlined"
+              value={gender}
+              onChange={handleChange}
+              required
             >
+              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="female">Female</MenuItem>
+              <MenuItem value="other">Other</MenuItem>
+            </TextField>
+            <TextField
+              label="Organization"
+              type="text"
+              className={classes.input}
+              fullWidth
+              name="organization"
+              variant="outlined"
+              value={organization}
+              onChange={handleChange}
+            />
+            {errorMessage && <Typography color="error">{errorMessage}</Typography>}
+            <Button variant="contained" className={classes.submit} type="submit">
               Register
             </Button>
           </form>
-          <Link href='#' variant='body2'>
+          <Link href="/login" variant="body2">
             Already have an account? Login
           </Link>
         </Paper>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './about.module.css'
 
-const about = () => {
+const About = () => {
     return (
         <div className={styles.aboutPage}>
           <div className={styles.aboutHeader}>
@@ -97,4 +97,4 @@ const about = () => {
       );
 }
 
-export default about
+export default About

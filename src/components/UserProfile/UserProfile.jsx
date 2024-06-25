@@ -1,7 +1,12 @@
 import React from 'react';
 import userStyle from './UserProfile.module.css';
+import { AuthContext } from '../../AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
 const UserProfile = () => {
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
   const user = {
     name: 'John Doe',
     email: 'john@example.com',
@@ -10,11 +15,11 @@ const UserProfile = () => {
   };
 
   const handleLogout = () => {
-    // Perform logout logic here
+    logout();
   };
 
   const handlePasswordChange = () => {
-    // Perform password change logic here
+    navigate("/reset-password");
   };
 
   return (
