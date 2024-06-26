@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const Register = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -97,8 +97,7 @@ const Register = () => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('prasthan_yatna_jwt', data.token);
-        setIsLoggedIn(true);
+        login(data.token) 
         navigate('/');
       } else {
         setErrorMessage(`Registration failed: ${Object.keys(data.keyValue)} already exists.`);
