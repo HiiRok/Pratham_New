@@ -1,26 +1,42 @@
-import React from 'react';
-import userStyle from './UserProfile.module.css';
+import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../../AuthProvider';
+import userStyle from './UserProfile.module.css';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 
 const UserProfile = () => {
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const user = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    profilePicture: 'https://via.placeholder.com/150',
-    coursesPurchased: 5,
-  };
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('prasthan_yatna_jwt');
+    if (token) {
+      try {
+        const decodedToken = parseJwt(token);
+        setUser({
+          name: decodedToken.name,
+          email: decodedToken.email,
+          profilePicture: decodedToken.profilePicture || 'https://via.placeholder.com/150',
+          coursesPurchased: decodedToken.coursesPurchased || 0,
+        });
+      } catch (error) {
+        console.error('Error decoding token:', error);
+      }
+    }
+  }, []);
 
   const handleLogout = () => {
     logout();
+    navigate('/login');
   };
 
   const handlePasswordChange = () => {
-    navigate("/reset-password");
+    navigate('/reset-password');
   };
+
+  if (!user) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className={userStyle.cardContainer}>
@@ -45,5 +61,23 @@ const UserProfile = () => {
     </div>
   );
 };
+
+function parseJwt(token) {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
+    );
+
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    console.error('Error parsing JWT:', error);
+    return null;
+  }
+}
 
 export default UserProfile;
