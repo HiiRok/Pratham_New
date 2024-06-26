@@ -1,11 +1,39 @@
 import { Button } from "@mui/material";
+import { useState,useEffect } from "react";
 import "./Home.css";
 import homeImage from "../../assets/Divine-mother-22.08.2023-OK.jpg";
 import homeCarouselImage from "../../assets/BHAJAGOVINDAM-OK.png";
 import Carousel from "react-material-ui-carousel";
 import { useNavigate } from "react-router-dom";
 const Home = ({isLoggedIn}) => {
+  
+  const [trendCourses, setTrendCourses] = useState([]);
+  
   const navigate = useNavigate();
+
+
+  useEffect( () => {
+	
+    fetch('http://localhost:3001/api/trend_course', {
+     method:'GET',
+      headers: {
+       Accept: `application/json`,
+      },
+    }).then(response=> response.json())
+    .then(data => {
+ 
+     console.log(data)
+      setTrendCourses(data)
+      console.log(data[0].ImgPath);
+    }).catch((error)=> {
+     
+      console.log('Error in getting trend courses',error);
+    });
+ 
+  },[])
+
+
+
   return (
     <div className="home">
       <div className="home_image">
@@ -65,10 +93,15 @@ const Home = ({isLoggedIn}) => {
             Attend Class
           </Button>
         </div>
-        <img src={homeCarouselImage} alt="" className="home_carousel_image" />
-        <img src={homeCarouselImage} alt="" className="home_carousel_image" />
-        <img src={homeCarouselImage} alt="" className="home_carousel_image" />
+        {
+		trendCourses.map( trendCourse =>(
+					
+	// <Link to= {`/discourses/${trendCourse.courseId}` } state={{course: trendCourse}}>
+        <img src={`http://localhost:3001/${trendCourse.ImgPath}`} alt="" className="home_carousel_image" />	
+	/* </Link> */
 
+		))
+	}
         <div style={{ display: 'flex', justifyContent: 'center', marginRight: '-750px' }}>
       <Button 
         variant="contained" 
