@@ -1,7 +1,11 @@
-import classes from './LoadingSpinner.module.css';
+import React from "react";
+import spinnerCss from "./LoadingSpinner.module.css";
 
-const LoadingSpinner = () => {
-  return (<div className={classes.spinner}></div>)
-}
+const LoadingSpinner = () => (
+  <div className={spinnerCss.spinner}>
+    <div className={spinnerCss.doubleBounce1}></div>
+    <div className={spinnerCss.doubleBounce2}></div>
+  </div>
+);
 
 export default LoadingSpinner;

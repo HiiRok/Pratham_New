@@ -43,6 +43,7 @@ const Discourse = () => {
         {courses.map(course => (
           <DiscoursesCard 
             key={course._id} 
+            courseId={course._id} 
             title={course.Name}
             imageUrl={course.ImgPath}
             body={course.Brief_Desc}

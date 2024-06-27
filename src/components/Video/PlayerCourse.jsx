@@ -1,5 +1,5 @@
 import styles from "./Player.module.css"
-import SharingButton from "./test";
+import SharingButton from "./Sharing";
 
 function PlayerCourse({ setVideo, videoLink, videoTitle, videoDuration }) {
   return (

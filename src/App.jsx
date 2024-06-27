@@ -17,7 +17,9 @@ import Poem from "./components/Poems/Poem";
 import Gallery from "./components/Activity/Gallery";
 import TestimonialPage from "./components/Testimonials/TestimonialPage";
 import PrivateRoute from "./PrivateRoute";
+import ProtectedCourseRoute from "./ProtectedCourseRoute";
 import PasswordChangeForm from "./components/LoginReigister/ResetPassword"
+
 
 function App() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -35,7 +37,7 @@ function App() {
           <Route path="/poems" element={<Poem />} />
           <Route path="/activity" element={<Gallery />} />
           <Route path="/testimonials" element={<TestimonialPage />} />
-          <Route path="/discourses/video" element={<Player />} />
+          <Route path="/discourses/:id/videos" element={<ProtectedCourseRoute element={Player} />} />
           <Route path="/discourses/:id" element={<SingleDiscourse />} />
           <Route path="/mycourses" element={<PrivateRoute element={MyCourses} />} />
           <Route path="/userProfile" element={<PrivateRoute element={UserProfile} />} />
