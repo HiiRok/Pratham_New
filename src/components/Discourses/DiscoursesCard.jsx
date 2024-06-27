@@ -1,11 +1,11 @@
 import React from 'react';
 import './DiscoursesCard.css';
 
-export const DiscoursesCard = ({title,imageUrl,body}) => {
+ const DiscoursesCard = ({title,imageUrl,body}) => {
   return (
     <div className='card-container'>
         <div className='image-container'>
-          <img src={imageUrl} alt="Discourses"/>
+          <img src={`http://localhost:3001/${imageUrl}`} alt="Discourses"/>
         </div>
         <div className='card-content'>
             <div className='card-title'>
@@ -22,3 +22,5 @@ export const DiscoursesCard = ({title,imageUrl,body}) => {
     </div>
   )
 }
+
+export default DiscoursesCard;

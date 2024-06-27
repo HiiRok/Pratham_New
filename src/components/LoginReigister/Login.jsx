@@ -77,6 +77,7 @@ const Login = () => {
     .then(data => {
       if (data.token) {
         login(data.token);
+  			localStorage.setItem('prasthan_yatna_jwt', data.token);
         navigate("/");
       }
     })
