@@ -45,10 +45,11 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Home />} />
         </Routes>
-        <footer className={styles.footer}>
+      <footer className={styles.footer}>
           <p>Copyright &copy; 2024 PrasthanYatnam.org. All rights reserved.</p>
-        </footer>
+      </footer>
       </Router>
+
     </>
   );
 }

@@ -1,59 +1,77 @@
-
-.card-container{
-    width:260px;
+/* DiscoursesCard.css */
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 260px;
     box-shadow: 0px 0px 15px -5px;
     transition: 0.3s;
     animation: ease-in;
-    margin:2rem;
+    margin: 2rem;
     padding: 1rem;
-}
-
-.card-container:hover{
+  }
+  
+  .card-container:hover {
     transform: scale(1.1);
     box-shadow: 0px 0px 15px 0px;
-}
-
-.image-container img{
-    overflow: hidden;
+  }
+  
+  .image-container {
+    width: 100%;
     height: 200px;
-}
-
-.card-content{
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     margin: 1rem;
     margin-top: 0.5rem;
-}
-
-h3,p{
+  }
+  
+  .card-title {
+    margin-bottom: 0.5rem;
+  }
+  
+  h3, p {
     margin: 0;
     padding: 0;
-}
-
-.card-title{
-    margin-bottom: 0.5rem;   
-}
-
-.btn{
+  }
+  
+  .card-body {
+    flex-grow: 1;
+  }
+  
+  .btn-container {
     display: flex;
     justify-content: center;
-
-}
-
-.btn button{
+    padding-top: 1rem; 
+  }
+  
+  .btn-container button {
     padding: 0.5rem;
     background-color: rgb(255, 255, 255);
-    border:none;
+    border: none;
     transition: 0.2s;
-    margin-bottom :0.5rem;
     text-transform: uppercase;
     animation: ease-in;
-    color:#1B9Cfc;
-    text-decoration:none;
+    color: #1B9Cfc;
+    text-decoration: none;
     font-weight: bold;
     border-radius: 3px;
-}
-
-.btn button:hover{
-    background-color:navy;
+    cursor: pointer;
+  }
+  
+  .btn-container button:hover {
+    background-color: navy;
     transform: scale(1.1);
     color: white;
-}
+  }
+  

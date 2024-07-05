@@ -102,7 +102,7 @@ const Home = ({isLoggedIn}) => {
 
 		))
 	}
-        <div style={{ display: 'flex', justifyContent: 'center', marginRight: '-750px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginRight: '-820px' }}>
       <Button 
         variant="contained" 
         sx={{ 
