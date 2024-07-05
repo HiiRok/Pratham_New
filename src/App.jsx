@@ -17,7 +17,7 @@ import Poem from "./components/Poems/Poem";
 import Gallery from "./components/Activity/Gallery";
 import TestimonialPage from "./components/Testimonials/TestimonialPage";
 import PrivateRoute from "./PrivateRoute";
-import ProtectedCourseRoute from "./ProtectedCourseRoute";
+import ProtectedCourseRoute from "./ProtectedCourseRoutes";
 import PasswordChangeForm from "./components/LoginReigister/ResetPassword"
 
 
