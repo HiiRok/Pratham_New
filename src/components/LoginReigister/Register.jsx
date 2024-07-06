@@ -140,28 +140,6 @@ const Register = () => {
               required
             />
             <TextField
-              label="Password"
-              type="password"
-              className={classes.input}
-              fullWidth
-              name="password"
-              variant="outlined"
-              value={password}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              label="Confirm Password"
-              type="password"
-              className={classes.input}
-              fullWidth
-              name="confirmPassword"
-              variant="outlined"
-              value={confirmPassword}
-              onChange={handleChange}
-              required
-            />
-            <TextField
               label="Age"
               type="number"
               className={classes.input}
@@ -196,7 +174,29 @@ const Register = () => {
               variant="outlined"
               value={organization}
               onChange={handleChange}
+            />            <TextField
+              label="Password"
+              type="password"
+              className={classes.input}
+              fullWidth
+              name="password"
+              variant="outlined"
+              value={password}
+              onChange={handleChange}
+              required
             />
+            <TextField
+              label="Confirm Password"
+              type="password"
+              className={classes.input}
+              fullWidth
+              name="confirmPassword"
+              variant="outlined"
+              value={confirmPassword}
+              onChange={handleChange}
+              required
+            />
+
             {errorMessage && <Typography color="error">{errorMessage}</Typography>}
             <Button variant="contained" className={classes.submit} type="submit">
               Register
