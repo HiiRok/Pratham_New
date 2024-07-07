@@ -19,6 +19,7 @@ const Discourse = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const tokenKey = 'prasthan_yatna_jwt';
 
     if (!isTokenExpired(tokenKey)) {
@@ -33,15 +34,15 @@ const Discourse = () => {
       })
         .then(response => response.json())
         .then(data => {
-          setCourses(data);
+          const doubledData = [...data, ...data];
+          setCourses(doubledData);
           setLoading(false); 
         })
         .catch(error => {
           console.error('Error fetching courses:', error);
-          setLoading(false); 
+          
         });
     } else {
-      
       navigate('/login');
     } 
   }, [navigate]);
@@ -65,23 +66,22 @@ const Discourse = () => {
           className={styles.searchInput}
         />
       </div>
+      {loading && (
+        <div className={styles.loaderContainer}>
+          <ClipLoader color="#4fa94d" loading={loading} css={override} size={100} />
+        </div>
+      )}
       <div className={styles.discourse}>
-      {loading ? ( 
-          <div className={styles.loaderContainer}>
-            <ClipLoader color="#4fa94d" loading={loading} css={override} size={100} />
-          </div>
-        ) : (
-          filteredCourses.map(course => (
-            <DiscoursesCard
-              key={course._id}
-              courseId={course._id}
-              title={course.Name}
-              imageUrl={course.ImgPath}
-              body={course.Brief_Desc}
-              className={styles.discourseCard}
-            />
-          ))
-        )}
+        {!loading && filteredCourses.map(course => (
+          <DiscoursesCard
+            key={course._id}
+            courseId={course._id}
+            title={course.Name}
+            imageUrl={course.ImgPath}
+            body={course.Brief_Desc}
+            className={styles.discourseCard}
+          />
+        ))}
       </div>
     </>
   );

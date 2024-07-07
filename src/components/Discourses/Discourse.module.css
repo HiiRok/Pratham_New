@@ -1,16 +1,17 @@
 .discourse {
   display: flex;
-  flex-wrap: wrap; /* Allow flex items to wrap to the next row */
-  justify-content: center; /* Center the content horizontally */
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  row-gap: 40px; 
+  margin-left:10px;
+  margin-right:10px;
 }
-
-  
-
 
 .searchContainer {
   display: flex;
   justify-content: center;
   margin: 20px 0;
+  margin-bottom: 30px;
 }
 
 .searchInput {
@@ -24,6 +25,7 @@
 .loaderContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh; /* Adjust as necessary */
+  align-items: center; /* Center vertically */
+  height: 70vh;
 }
+

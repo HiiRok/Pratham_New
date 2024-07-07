@@ -12,6 +12,7 @@ const Home = ({isLoggedIn}) => {
   const navigate = useNavigate();
 
   const defaultImageUrl = 'src/assets/login.jpg';
+  window.scrollTo(0, 0);
 
 
   useEffect( () => {

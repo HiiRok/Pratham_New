@@ -1,5 +1,5 @@
 // src/components/LoginReigister/Register.js
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { Button, TextField, Grid, Paper, Typography, Link, makeStyles, MenuItem } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider';
@@ -46,6 +46,8 @@ const Register = () => {
   const [gender, setGender] = useState('');
   const [organization, setOrganization] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(()=>{ window.scrollTo(0, 0);},[])
 
   const handleChange = (event) => {
     const { name, value } = event.target;

@@ -67,99 +67,102 @@ const SingleDiscourse = () => {
   }
 
   return (
-    <div className={singleCourseCSS.singleDiscourse}>
-      <div className={singleCourseCSS.header}>
-        <img
-          src={courseDetails.image}
-          alt={courseDetails.title}
-          className={singleCourseCSS.headerImage}
-        />
-        <div className={singleCourseCSS.headerContent}>
-          <h1>{courseDetails.title}</h1>
-          <div className={singleCourseCSS.details}>
-            <p>
-              <span className={singleCourseCSS.label}>Lectures:</span>{" "}
-              {courseDetails.lectures}
-            </p>
-            <p>
-              <span className={singleCourseCSS.label}>Duration:</span>{" "}
-              {courseDetails.duration}
-            </p>
-          </div>
-          <Button
-            variant="contained"
-            sx={{
-              width: "13rem",
-              height: "3rem",
-              transition: "0.3s",
-              backgroundColor: "orange",
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              marginTop: "20px",
-              "&:hover": {
-                backgroundColor: "darkorange",
-              },
-            }}
-            onClick={() => {
-              if (hasBoughtCourse) {
-                navigate(`/discourses/${id}/videos`);
-              } else {
-                navigate(`/buy-course/${id}`);
-              }
-            }}
-          >
-            {hasBoughtCourse ? "Start Discourse" : "Buy Course"}
-          </Button>
-        </div>
-      </div>
-      <div className={singleCourseCSS.content}>
-        <h3>Description:</h3>
-        <div className={singleCourseCSS.description}>
-          <p>{courseDetails.description}</p>
-        </div>
-        <div className={singleCourseCSS.videoList}>
-          <h3>Course Videos</h3>
-          <div className={singleCourseCSS.videoCards}>
-            {courseDetails.videos.map((video) => (
-              <div key={video.id} className={singleCourseCSS.videoCard}>
-                <img
-                  src={video.thumbnailUrl}
-                  alt={video.title}
-                  className={singleCourseCSS.videoThumbnail}
-                />
-                <div className={singleCourseCSS.videoDetails}>
-                  <h4 className={singleCourseCSS.videoTitle}>{video.title}</h4>
-                  <p className={singleCourseCSS.videoDescription}>
-                    {video.description}
-                  </p>
-                  <div className={singleCourseCSS.videoMeta}>
-                    <span className={singleCourseCSS.videoDuration}>
-                      {video.duration}
-                    </span>
-                    <span className={singleCourseCSS.videoInstructor}>
-                      {video.instructor}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {!hasBoughtCourse && (
-          <div className={singleCourseCSS.buttonContainer}>
+    courseDetails ? (
+      <div className={singleCourseCSS.singleDiscourse}>
+        <div className={singleCourseCSS.header}>
+          <img
+            src={courseDetails.image}
+            alt={courseDetails.title}
+            className={singleCourseCSS.headerImage}
+          />
+          <div className={singleCourseCSS.headerContent}>
+            <h1>{courseDetails.title}</h1>
+            <div className={singleCourseCSS.details}>
+              <p>
+                <span className={singleCourseCSS.label}>Lectures:</span>{" "}
+                {courseDetails.lectures}
+              </p>
+              <p>
+                <span className={singleCourseCSS.label}>Duration:</span>{" "}
+                {courseDetails.duration}
+              </p>
+            </div>
             <Button
               variant="contained"
-              color="primary"
+              sx={{
+                width: "13rem",
+                height: "3rem",
+                transition: "0.3s",
+                backgroundColor: "orange",
+                fontWeight: "bold",
+                fontSize: "1.1rem",
+                marginTop: "20px",
+                "&:hover": {
+                  backgroundColor: "darkorange",
+                },
+              }}
               onClick={() => {
-                navigate(`/buy-course/${id}`);
+                if (hasBoughtCourse) {
+                  navigate(`/discourses/${id}/videos`);
+                } else {
+                  navigate(`/buy-course/${id}`);
+                }
               }}
             >
-              Buy Course
+              {hasBoughtCourse ? "Start Discourse" : "Buy Course"}
             </Button>
           </div>
-        )}
+        </div>
+        <div className={singleCourseCSS.content}>
+          <h3>Description:</h3>
+          <div className={singleCourseCSS.description}>
+            <p>{courseDetails.description}</p>
+          </div>
+          <div className={singleCourseCSS.videoList}>
+            <h3>Course Videos</h3>
+            <div className={singleCourseCSS.videoCards}>
+              {courseDetails.videos.map((video) => (
+                <div key={video.id} className={singleCourseCSS.videoCard}>
+                  <img
+                    src={video.thumbnailUrl}
+                    alt={video.title}
+                    className={singleCourseCSS.videoThumbnail}
+                  />
+                  <div className={singleCourseCSS.videoDetails}>
+                    <h4 className={singleCourseCSS.videoTitle}>{video.title}</h4>
+                    <p className={singleCourseCSS.videoDescription}>
+                      {video.description}
+                    </p>
+                    <div className={singleCourseCSS.videoMeta}>
+                      <span className={singleCourseCSS.videoDuration}>
+                        {video.duration}
+                      </span>
+                      <span className={singleCourseCSS.videoInstructor}>
+                        {video.instructor}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {!hasBoughtCourse && (
+            <div className={singleCourseCSS.buttonContainer}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  navigate(`/buy-course/${id}`);
+                }}
+              >
+                Buy Course
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    ):(<h3 className={singleCourseCSS.loaderContainer}>Something went wrong...</h3>)
+
   );
 };
 
