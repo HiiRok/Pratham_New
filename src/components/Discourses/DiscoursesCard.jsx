@@ -5,24 +5,37 @@ import { useNavigate } from 'react-router-dom';
 const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
   const navigate = useNavigate();
 
+  const truncateText = (text, maxWords) => {
+    const words = text.split(' ');
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(' ') + '...';
+    }
+    return text;
+  };
+
+  // Truncate body text to fit within the card (approximately 50 words)
+  const truncatedBody = truncateText(body, 20);
+  const truncatedTitle = truncateText(title, 3);
+
   const handleViewDiscourse = () => {
-    navigate(`/discourse/${courseId}`);
+    console.log(courseId)
+    navigate(`/discourses/${courseId}`);
   };
 
   return (
     <div className='card-container'>
       <div className='image-container'>
-        <img src={`http://localhost:3001/${imageUrl}`} alt="Discourses" />
+        <img src={`https://backend-deploy-0ll5.onrender.com/${imageUrl}`} alt="Discourses" />
       </div>
       <div className='card-content'>
         <div className='card-title'>
-          <h1>{title}</h1>
+          <h2>{truncatedTitle}</h2>
         </div>
         <div className='card-body'>
-          <p>{body}</p>
+          <p>{truncatedBody}</p>
         </div>
       </div>
-      <div className='btn'>
+      <div className='btn-container'>
         <button onClick={handleViewDiscourse}>View Discourse</button>
       </div>
     </div>

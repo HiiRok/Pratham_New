@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
     backgroundColor: theme.palette.common.background,
   },
   form: {
-    width: '300px',
+    width: '400px',
     margin: 'auto',
   },
   input: {
@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     padding: theme.spacing(1, 2),
     marginTop: theme.spacing(2),
+    '&:hover': {
+      backgroundColor: 'green', // Change to green on hover
+    },
   },
 }));
 
@@ -73,7 +76,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/user/register/v1', {
+      const response = await fetch('https://backend-deploy-0ll5.onrender.com/api/user/register/v1', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({

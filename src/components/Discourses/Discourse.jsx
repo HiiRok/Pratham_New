@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import styles from './Discourse.module.css'; // Import CSS module
+import styles from './Discourse.module.css';
 import DiscoursesCard from './DiscoursesCard';
 import isTokenExpired from '../middlewares/isTokenExpired';
 import { useNavigate } from 'react-router-dom';
+import { css } from '@emotion/react';
+import { ClipLoader } from 'react-spinners';
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const Discourse = () => {
   const [courses, setCourses] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,7 +24,7 @@ const Discourse = () => {
     if (!isTokenExpired(tokenKey)) {
       const token = localStorage.getItem(tokenKey);
 
-      fetch('http://localhost:3001/api/course/courses', {
+      fetch('https://backend-deploy-0ll5.onrender.com/api/course/courses', {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -23,12 +32,18 @@ const Discourse = () => {
         },
       })
         .then(response => response.json())
-        .then(data => setCourses(data))
-        .catch(error => console.error('Error fetching courses:', error));
+        .then(data => {
+          setCourses(data);
+          setLoading(false); 
+        })
+        .catch(error => {
+          console.error('Error fetching courses:', error);
+          setLoading(false); 
+        });
     } else {
-      alert('Please Login or Register');
+      
       navigate('/login');
-    }
+    } 
   }, [navigate]);
 
   const handleSearchChange = (e) => {
@@ -51,16 +66,22 @@ const Discourse = () => {
         />
       </div>
       <div className={styles.discourse}>
-        {filteredCourses.map(course => (
-          <DiscoursesCard
-            key={course._id}
-            courseId={course._id}
-            title={course.Name}
-            imageUrl={course.ImgPath}
-            body={course.Brief_Desc}
-            className={styles.discourseCard}
-          />
-        ))}
+      {loading ? ( 
+          <div className={styles.loaderContainer}>
+            <ClipLoader color="#4fa94d" loading={loading} css={override} size={100} />
+          </div>
+        ) : (
+          filteredCourses.map(course => (
+            <DiscoursesCard
+              key={course._id}
+              courseId={course._id}
+              title={course.Name}
+              imageUrl={course.ImgPath}
+              body={course.Brief_Desc}
+              className={styles.discourseCard}
+            />
+          ))
+        )}
       </div>
     </>
   );

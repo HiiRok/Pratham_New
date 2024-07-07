@@ -4,17 +4,19 @@ import "./Home.css";
 import homeImage from "../../assets/Divine-mother-22.08.2023-OK.jpg";
 import homeCarouselImage from "../../assets/BHAJAGOVINDAM-OK.png";
 import Carousel from "react-material-ui-carousel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 const Home = ({isLoggedIn}) => {
   
   const [trendCourses, setTrendCourses] = useState([]);
   
   const navigate = useNavigate();
 
+  const defaultImageUrl = 'src/assets/login.jpg';
+
 
   useEffect( () => {
 	
-    fetch('http://localhost:3001/api/trend_course', {
+    fetch('https://backend-deploy-0ll5.onrender.com/api/trend_course', {
      method:'GET',
       headers: {
        Accept: `application/json`,
@@ -94,13 +96,17 @@ const Home = ({isLoggedIn}) => {
           </Button>
         </div>
         {
-		trendCourses.map( trendCourse =>(
-					
-	// <Link to= {`/discourses/${trendCourse.courseId}` } state={{course: trendCourse}}>
-        <img src={`http://localhost:3001/${trendCourse.ImgPath}`} alt="" className="home_carousel_image" />	
-	/* </Link> */
-
-		))
+          trendCourses.map(trendCourse => (
+    <Link key={trendCourse.courseId} to={`/discourses/${trendCourse.courseId}`} state={{ course: trendCourse }}>
+        <img 
+            src={`https://backend-deploy-0ll5.onrender.com/${trendCourse.ImgPath}` || defaultImageUrl} 
+            alt={trendCourse.title || "Course Image"} 
+            className="home_carousel_image" 
+            onError={(e) => { e.target.src = defaultImageUrl; }} // Handle broken image links
+        />
+    </Link>
+))
+		
 	}
         <div style={{ display: 'flex', justifyContent: 'center', marginRight: '-820px' }}>
       <Button 

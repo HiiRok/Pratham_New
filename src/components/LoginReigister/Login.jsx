@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   form: {
-    width: '100%',
+    width: '400px',
     marginTop: theme.spacing(1),
   },
   input: {
@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
+    '&:hover': {
+      backgroundColor: 'green', // Change to green on hover
+    },
   },
   errorText: {
     color: theme.palette.error.main,
@@ -54,7 +57,7 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    fetch('http://localhost:3001/api/user/login', {
+    fetch('https://backend-deploy-0ll5.onrender.com/api/user/login', {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify({

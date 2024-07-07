@@ -3,7 +3,7 @@
     background-size: 100% 100%;
     height: 480px;
     /* background: linear-gradient(to top, rgb(223, 222, 222) 10%,rgba(255,255,255,0) 50%),url('src/assets/spring-3404.gif'); */
-    background: url('src/assets/spring-3404.gif');
+    background: url('/src/assets/login.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center 90%;
@@ -95,10 +95,10 @@
 }
 
 .home_carousel_image{
-    width:100%; 
+    width: 100%; 
     object-fit: contain;
-    transition: 0.3s;
-    animation: ease-in;
+    transition: transform 0.3s ease-in;
+
 }
 .home_carousel_image:hover{
     transform: scale(1.03);

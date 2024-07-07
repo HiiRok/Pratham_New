@@ -12,7 +12,7 @@ const ProtectedCourseRoute = ({ element: Component, ...rest }) => {
     if (isLoggedIn) {
       const checkCoursePurchase = async () => {
         try {
-          const response = await axios.get(`http://localhost:3001/api/checkCoursePurchase/${id}`, {
+          const response = await axios.get(`https://backend-deploy-0ll5.onrender.com/api/checkCoursePurchase/${id}`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('prasthan_yatna_jwt')}`
             }

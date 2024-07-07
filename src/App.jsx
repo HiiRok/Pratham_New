@@ -43,6 +43,7 @@ function App() {
           <Route path="/userProfile" element={<PrivateRoute element={UserProfile} />} />
           <Route path="/reset-password" element={<PrivateRoute element={PasswordChangeForm} />} />
           <Route path="/about" element={<About />} />
+          <Route path="/buy-course/:id" element={<About />} />
           <Route path="*" element={<Home />} />
         </Routes>
       <footer className={styles.footer}>
