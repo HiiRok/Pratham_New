@@ -1,5 +1,5 @@
 // src/components/LoginReigister/Register.js
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { Button, TextField, Grid, Paper, Typography, Link, makeStyles, MenuItem } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider';
@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
     backgroundColor: theme.palette.common.background,
   },
   form: {
-    width: '300px',
+    width: '400px',
     margin: 'auto',
   },
   input: {
@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     padding: theme.spacing(1, 2),
     marginTop: theme.spacing(2),
+    '&:hover': {
+      backgroundColor: 'green', // Change to green on hover
+    },
   },
 }));
 
@@ -43,6 +46,8 @@ const Register = () => {
   const [gender, setGender] = useState('');
   const [organization, setOrganization] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(()=>{ window.scrollTo(0, 0);},[])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -73,7 +78,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/user/register/v1', {
+      const response = await fetch('https://backend-deploy-0ll5.onrender.com/api/user/register/v1', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({
@@ -140,28 +145,6 @@ const Register = () => {
               required
             />
             <TextField
-              label="Password"
-              type="password"
-              className={classes.input}
-              fullWidth
-              name="password"
-              variant="outlined"
-              value={password}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              label="Confirm Password"
-              type="password"
-              className={classes.input}
-              fullWidth
-              name="confirmPassword"
-              variant="outlined"
-              value={confirmPassword}
-              onChange={handleChange}
-              required
-            />
-            <TextField
               label="Age"
               type="number"
               className={classes.input}
@@ -196,7 +179,29 @@ const Register = () => {
               variant="outlined"
               value={organization}
               onChange={handleChange}
+            />            <TextField
+              label="Password"
+              type="password"
+              className={classes.input}
+              fullWidth
+              name="password"
+              variant="outlined"
+              value={password}
+              onChange={handleChange}
+              required
             />
+            <TextField
+              label="Confirm Password"
+              type="password"
+              className={classes.input}
+              fullWidth
+              name="confirmPassword"
+              variant="outlined"
+              value={confirmPassword}
+              onChange={handleChange}
+              required
+            />
+
             {errorMessage && <Typography color="error">{errorMessage}</Typography>}
             <Button variant="contained" className={classes.submit} type="submit">
               Register
