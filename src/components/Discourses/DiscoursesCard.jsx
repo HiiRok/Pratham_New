@@ -6,6 +6,9 @@ const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
   const navigate = useNavigate();
 
   const handleViewDiscourse = () => {
+
+    console.log("handling view discourse")
+
     navigate(`/discourse/${courseId}`);
   };
 
