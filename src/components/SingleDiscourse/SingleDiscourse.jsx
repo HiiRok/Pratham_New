@@ -20,11 +20,19 @@ const SingleDiscourse = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
+    const tokenKey = 'prasthan_yatna_jwt';
+    const token = localStorage.getItem(tokenKey);
+
+
     const fetchCourseDetails = async () => {
       try {
         const response = await axios.get(
-          `https://backend-deploy-0ll5.onrender.com/api/courses/${id}`
-        );
+          `http://localhost:3001/api/course/${id}`,{
+          headers: {
+            'Authorization': 'Bearer ' + token
+          }
+      });
         setCourseDetails(response.data);
         setLoading(false); // Set loading to false after data fetch
       } catch (error) {
@@ -40,7 +48,7 @@ const SingleDiscourse = () => {
     const checkCoursePurchase = async () => {
       try {
         const response = await axios.get(
-          `https://backend-deploy-0ll5.onrender.com/api/checkCoursePurchase/${id}`,
+          `http://localhost:3001/api/checkCoursePurchase/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem(
@@ -72,7 +80,7 @@ const SingleDiscourse = () => {
         <div className={singleCourseCSS.header}>
           <img
             src={courseDetails.image}
-            alt={courseDetails.title}
+            alt={courseDetails.Name}
             className={singleCourseCSS.headerImage}
           />
           <div className={singleCourseCSS.headerContent}>
@@ -121,7 +129,7 @@ const SingleDiscourse = () => {
           <div className={singleCourseCSS.videoList}>
             <h3>Course Videos</h3>
             <div className={singleCourseCSS.videoCards}>
-              {courseDetails.videos.map((video) => (
+              {courseDetails.Content.map((video) => (
                 <div key={video.id} className={singleCourseCSS.videoCard}>
                   <img
                     src={video.thumbnailUrl}
