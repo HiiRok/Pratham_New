@@ -25,7 +25,7 @@ const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
   return (
     <div className='card-container'>
       <div className='image-container'>
-        <img src={`https://backend-deploy-0ll5.onrender.com/${imageUrl}`} alt="Discourses" />
+        <img src={`http://localhost:3001/${imageUrl}`} alt="Discourses" />
       </div>
       <div className='card-content'>
         <div className='card-title'>

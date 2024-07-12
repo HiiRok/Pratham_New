@@ -25,7 +25,7 @@ const Discourse = () => {
     if (!isTokenExpired(tokenKey)) {
       const token = localStorage.getItem(tokenKey);
 
-      fetch('https://backend-deploy-0ll5.onrender.com/api/course/courses', {
+      fetch('http://localhost:3001/api/course/courses', {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -34,6 +34,7 @@ const Discourse = () => {
       })
         .then(response => response.json())
         .then(data => {
+          console.log(data)  //remove later
           const doubledData = [...data, ...data];
           setCourses(doubledData);
           setLoading(false); 
