@@ -115,7 +115,7 @@
 
 .sharingButtonsContainer {
   position: fixed;
-  background-color: #dddddd5e;
+  background-color: #ffffff24;
   top: 50%;
   right: 10px; /* Adjust this value if you need more space from the right edge */
   transform: translateY(-50%);
