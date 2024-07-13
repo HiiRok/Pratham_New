@@ -113,7 +113,7 @@ const Home = ({isLoggedIn}) => {
       <Button 
         variant="contained" 
         sx={{ 
-          width: "14.5rem", 
+          width: "15.5rem", 
           height: "3rem", 
           transition: "0.3s", 
           backgroundColor: "orange",
