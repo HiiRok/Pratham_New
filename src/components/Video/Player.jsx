@@ -21,11 +21,11 @@ const Player = () => {
   useEffect(() => {
     const fetchCourseVideos = async () => {
       try {
-        const response = await axios.get(`https://backend-deploy-0ll5.onrender.com/api/courses/${id}`, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('prasthan_yatna_jwt')}`
-          }
-        });
+      //   const response = await axios.get(`https://backend-deploy-0ll5.onrender.com/api/courses/${id}`, {
+      //     headers: {
+      //       'Authorization': `Bearer ${localStorage.getItem('prasthan_yatna_jwt')}`
+      //     }
+      //   });
         //setVideos(response.data.Content);
         setVideos([
           {

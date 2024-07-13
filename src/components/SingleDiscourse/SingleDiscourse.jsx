@@ -5,7 +5,8 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import singleCourseCSS from "./SingleDiscourse.module.css";
 import { API_BASE_URL } from "../../config";
-import { CurrencyRupee } from "@mui/icons-material";
+
+import SharingButton from "../Video/Sharing";
 
 const override = `
   display: block;
@@ -171,6 +172,9 @@ const SingleDiscourse = () => {
               </Button>
             </div>
           )}
+        </div>
+        <div className={singleCourseCSS.sharingButtonsContainer}>
+          <SharingButton url={window.location.href} title={courseDetails.Name} />
         </div>
       </div>
     ):(<h3 className={singleCourseCSS.loaderContainer}>Something went wrong...</h3>)

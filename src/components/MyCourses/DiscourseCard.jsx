@@ -4,7 +4,12 @@ import styles from "./DiscourseCard.module.css";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 
-const DiscourseCard = ({ img, id }) => {
+const DiscourseCard = ({key,
+    img,
+    id,
+    title,
+    description
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -13,14 +18,10 @@ const DiscourseCard = ({ img, id }) => {
         <img src={img} alt="course image" className={styles.image} />
         <div className={styles.content}>
           <Link to={`/discourses/${id}`} className={styles.link}>
-            <h1 className={styles.title}>Discourse Name</h1>
+            <h1 className={styles.title}>{title}</h1>
           </Link>
           <p className={styles.description}>
-            Course Description Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Eveniet hic reprehenderit a perspiciatis porro
-            obcaecati, beatae pariatur deserunt odit praesentium nostrum ab
-            ipsum rerum illo! Eaque id officia saepe nobis recusandae maxime
-            voluptatibus quos! lorem34
+            {description}
           </p>
           <Button
             variant="contained"

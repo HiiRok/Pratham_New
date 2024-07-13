@@ -6,9 +6,10 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
+
 const SharingButton = ({ url, title }) => {
   return (
-    <div>
+    <>
       <FacebookShareButton url={url} quote={title}>
         <IconButton aria-label="Share on Facebook">
           <FacebookIcon style={{ color: "#3b5998" }} />
@@ -26,10 +27,10 @@ const SharingButton = ({ url, title }) => {
       </LinkedinShareButton>
       <WhatsappShareButton url={url} title={title}>
         <IconButton aria-label="Share on WhatsApp">
-          <WhatsAppIcon style={{ color: "#25D366" }} /> {/* WhatsApp brand color */}
+          <WhatsAppIcon style={{ color: "#25D366" }} /> 
         </IconButton>
       </WhatsappShareButton>
-    </div>
+    </>
   );
 };
 

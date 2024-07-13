@@ -112,3 +112,19 @@
   align-items: center;
   height: 70vh; /* Adjust as necessary */
 }
+
+.sharingButtonsContainer {
+  position: fixed;
+  background-color: #dddddd5e;
+  top: 50%;
+  right: 10px; /* Adjust this value if you need more space from the right edge */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+.sharingButtonsContainer .MuiIconButton-root {
+  margin: 10px 0;
+}
