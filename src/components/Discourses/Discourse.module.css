@@ -1,7 +1,7 @@
 .discourse {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   row-gap: 40px; 
   margin-left:10px;
   margin-right:10px;

@@ -3,20 +3,38 @@ import playercss from "./Player.module.css";
 import PlayerCourse from "./PlayerCourse";
 import VideoPlayer from "./VideoPlayer";
 import axios from 'axios'; // Assuming you're using axios for API calls
+import { css } from '@emotion/react';
+import { ClipLoader } from 'react-spinners';
+import { useNavigate, useParams } from "react-router-dom";
 
-const Player = ({ courseName }) => {
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
+const Player = () => {
   const [videos, setVideos] = useState([]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchCourseVideos = async () => {
       try {
-        const response = await axios.get(`https://backend-deploy-0ll5.onrender.com/api/courses/${courseName}/videos`, {
+        const response = await axios.get(`https://backend-deploy-0ll5.onrender.com/api/courses/${id}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('prasthan_yatna_jwt')}`
           }
         });
-        setVideos(response.data);
+        //setVideos(response.data.Content);
+        setVideos([
+          {
+            id: "12",
+            videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            duration: "12"
+          }
+        ]);
+
         setCurrentVideoIndex(0);
       } catch (error) {
         console.error("Error fetching course videos:", error);
@@ -24,7 +42,7 @@ const Player = ({ courseName }) => {
     };
 
     fetchCourseVideos();
-  }, [courseName]);
+  }, [id]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -41,6 +59,7 @@ const Player = ({ courseName }) => {
       setCurrentVideoIndex(index);
     }
   };
+
 
   return (
     <div className={playercss.player}>
@@ -70,8 +89,8 @@ const Player = ({ courseName }) => {
           </div>
         </>
       ) : (
-        <div className={playercss.loading}>
-          <LoadingSpinner />
+        <div className={playercss.loader}>
+          <ClipLoader color="#4fa94d" loading={videos.length<=0} css={override} size={100} />
         </div>
       )}
     </div>

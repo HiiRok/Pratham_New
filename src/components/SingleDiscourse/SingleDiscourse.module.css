@@ -1,5 +1,6 @@
 .singleDiscourse {
-  max-width: 1200px;
+ 
+  width:1000px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -7,34 +8,54 @@
 
 .header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
 }
 
 .headerImage {
-  width: 300px;
+  width: 600px;
   height: auto;
   border-radius: 10px;
 }
 
 .headerContent {
+  margin-left: 70px;
+  margin-top: 50px;
   flex: 1;
+}
+.headerContent h1{
+  font-size: 40px;
 }
 
 .details {
   margin-top: 10px;
 }
 
-.label {
-  font-weight: bold;
+.details p{
+  margin: 10px;
+  font-size: larger;
 }
+
+.label {
+  font-weight: bolder;
+}
+
+
 
 .content {
   margin-top: 20px;
 }
 
+.content h3{
+  font-size: 25px;
+}
+
 .description {
   margin-bottom: 20px;
+  width:900px;
+  text-align: justify;
+  line-height: 1.6;
+
 }
 
 .videoList {

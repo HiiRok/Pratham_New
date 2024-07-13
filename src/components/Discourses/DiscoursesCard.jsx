@@ -1,6 +1,7 @@
 import React from 'react';
 import './DiscoursesCard.css';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../config';
 
 const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
   const navigate = useNavigate();
@@ -18,14 +19,13 @@ const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
   const truncatedTitle = truncateText(title, 3);
 
   const handleViewDiscourse = () => {
-    console.log(courseId)
     navigate(`/discourses/${courseId}`);
   };
 
   return (
     <div className='card-container'>
       <div className='image-container'>
-        <img src={`http://localhost:3001/${imageUrl}`} alt="Discourses" />
+        <img src={`${API_BASE_URL}/${imageUrl}`} alt="Discourses" />
       </div>
       <div className='card-content'>
         <div className='card-title'>

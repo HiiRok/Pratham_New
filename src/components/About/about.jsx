@@ -37,7 +37,7 @@ const About = () => {
             Sanatan Dharma.</p>
 
             <h2>What is Prasthan Yatnam:</h2>
-            <p>9It is a humble endeavor to develop a movement wherein 
+            <p>It is a humble endeavor to develop a movement wherein 
             every Thursday members gather to sit in group meditation with the music of different 
             sects. Thereafter a brief input is given about the sect whose music is being used, 
             followed by sharing of experiences by the participants. God willing, one day this 

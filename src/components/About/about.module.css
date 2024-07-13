@@ -37,6 +37,7 @@
   .aboutContent h2 {
     font-size: 2rem;
     margin-bottom: 15px;
+    text-align: left;
     color: #12276d; /* Reused the warm brown color for headings */
     font-family: 'Playfair Display', serif; /* Used the same font as the main heading */
   }

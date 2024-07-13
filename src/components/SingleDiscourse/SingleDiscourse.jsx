@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import singleCourseCSS from "./SingleDiscourse.module.css";
+import { API_BASE_URL } from "../../config";
+import { CurrencyRupee } from "@mui/icons-material";
 
 const override = `
   display: block;
@@ -15,7 +17,7 @@ const SingleDiscourse = () => {
   const { id } = useParams();
   const [courseDetails, setCourseDetails] = useState(null);
   const [hasBoughtCourse, setHasBoughtCourse] = useState(false);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -28,16 +30,17 @@ const SingleDiscourse = () => {
     const fetchCourseDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/course/${id}`,{
+          `${API_BASE_URL}/api/course/${id}`,{
           headers: {
             'Authorization': 'Bearer ' + token
           }
       });
         setCourseDetails(response.data);
-        setLoading(false); // Set loading to false after data fetch
+        console.log(response.data);
+        setLoading(false); 
       } catch (error) {
         console.error("Error fetching course details:", error);
-        setLoading(false); // Ensure loading is set to false on error
+        setLoading(false); 
       }
     };
 
@@ -48,7 +51,7 @@ const SingleDiscourse = () => {
     const checkCoursePurchase = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/checkCoursePurchase/${id}`,
+          `${API_BASE_URL}/api/checkCoursePurchase/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem(
@@ -57,7 +60,8 @@ const SingleDiscourse = () => {
             },
           }
         );
-        setHasBoughtCourse(response.data.hasBought);
+        setHasBoughtCourse(!response.data.hasBought);
+        
       } catch (error) {
         console.error("Error checking course purchase:", error);
       }
@@ -79,27 +83,31 @@ const SingleDiscourse = () => {
       <div className={singleCourseCSS.singleDiscourse}>
         <div className={singleCourseCSS.header}>
           <img
-            src={courseDetails.image}
+            src={`${API_BASE_URL}/${courseDetails.ImgPath}`}
             alt={courseDetails.Name}
             className={singleCourseCSS.headerImage}
           />
           <div className={singleCourseCSS.headerContent}>
-            <h1>{courseDetails.title}</h1>
+            <h1>{courseDetails.Name}</h1>
             <div className={singleCourseCSS.details}>
               <p>
-                <span className={singleCourseCSS.label}>Lectures:</span>{" "}
-                {courseDetails.lectures}
+                <span className={singleCourseCSS.label}>Author:</span>{" "}
+                {courseDetails.Author}
               </p>
               <p>
                 <span className={singleCourseCSS.label}>Duration:</span>{" "}
                 {courseDetails.duration}
               </p>
+              {!hasBoughtCourse && (              <p>
+                <span className={singleCourseCSS.label}>Price:</span>{" "}
+                {courseDetails.Price} rupees only/-
+              </p>)}
             </div>
             <Button
               variant="contained"
               sx={{
-                width: "13rem",
-                height: "3rem",
+                width: "7rem",
+                height: "2rem",
                 transition: "0.3s",
                 backgroundColor: "orange",
                 fontWeight: "bold",
@@ -117,17 +125,17 @@ const SingleDiscourse = () => {
                 }
               }}
             >
-              {hasBoughtCourse ? "Start Discourse" : "Buy Course"}
+              {hasBoughtCourse ? "Start" : "Buy"}
             </Button>
           </div>
         </div>
         <div className={singleCourseCSS.content}>
           <h3>Description:</h3>
           <div className={singleCourseCSS.description}>
-            <p>{courseDetails.description}</p>
+            <p>{courseDetails.Brief_Desc}</p>
           </div>
           <div className={singleCourseCSS.videoList}>
-            <h3>Course Videos</h3>
+            <h3>Discourse Video List:</h3>
             <div className={singleCourseCSS.videoCards}>
               {courseDetails.Content.map((video) => (
                 <div key={video.id} className={singleCourseCSS.videoCard}>

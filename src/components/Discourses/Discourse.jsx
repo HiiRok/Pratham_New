@@ -5,6 +5,7 @@ import isTokenExpired from '../middlewares/isTokenExpired';
 import { useNavigate } from 'react-router-dom';
 import { css } from '@emotion/react';
 import { ClipLoader } from 'react-spinners';
+import { API_BASE_URL } from '../../config';
 
 const override = css`
   display: block;
@@ -25,7 +26,7 @@ const Discourse = () => {
     if (!isTokenExpired(tokenKey)) {
       const token = localStorage.getItem(tokenKey);
 
-      fetch('http://localhost:3001/api/course/courses', {
+      fetch(`${API_BASE_URL}/api/course/courses`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -34,9 +35,7 @@ const Discourse = () => {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data)  //remove later
-          const doubledData = [...data, ...data];
-          setCourses(doubledData);
+          setCourses(data);
           setLoading(false); 
         })
         .catch(error => {

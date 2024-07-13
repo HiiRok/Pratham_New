@@ -3,6 +3,7 @@ import React, { useState, useContext,useEffect } from 'react';
 import { Button, TextField, Grid, Paper, Typography, Link, makeStyles, MenuItem } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider';
+import { API_BASE_URL } from '../../config';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -78,7 +79,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch('https://backend-deploy-0ll5.onrender.com/api/user/register/v1', {
+      const response = await fetch(`${API_BASE_URL}/api/user/register/v1`, {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({

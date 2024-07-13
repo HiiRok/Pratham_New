@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import { Button, TextField, Grid, Paper, Typography, Link, CircularProgress, makeStyles } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider';
+import { API_BASE_URL } from '../../config';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -57,7 +58,7 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    fetch('https://backend-deploy-0ll5.onrender.com/api/user/login', {
+    fetch(`${API_BASE_URL}/api/user/login`, {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify({
