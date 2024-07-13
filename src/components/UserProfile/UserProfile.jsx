@@ -31,7 +31,7 @@ const UserProfile = () => {
   };
 
   const handlePasswordChange = () => {
-    navigate('/reset-password');
+    navigate('/forgot-password');
   };
 
   if (!user) {

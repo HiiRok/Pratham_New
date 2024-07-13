@@ -6,6 +6,7 @@ import axios from 'axios'; // Assuming you're using axios for API calls
 import { css } from '@emotion/react';
 import { ClipLoader } from 'react-spinners';
 import { useNavigate, useParams } from "react-router-dom";
+import { API_BASE_URL } from "../../config";
 
 const override = css`
   display: block;
@@ -16,28 +17,25 @@ const override = css`
 const Player = () => {
   const [videos, setVideos] = useState([]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
     const fetchCourseVideos = async () => {
       try {
-      //   const response = await axios.get(`https://backend-deploy-0ll5.onrender.com/api/courses/${id}`, {
-      //     headers: {
-      //       'Authorization': `Bearer ${localStorage.getItem('prasthan_yatna_jwt')}`
-      //     }
-      //   });
-        //setVideos(response.data.Content);
-        setVideos([
-          {
-            id: "12",
-            videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            duration: "12"
+        const response = await axios.get(`${API_BASE_URL}/api/course/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('prasthan_yatna_jwt')}`
           }
-        ]);
-
+        });
+        setVideos(response.data.Content);
         setCurrentVideoIndex(0);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching course videos:", error);
+        setError("Failed to load videos. Please try again later.");
+        setLoading(false);
       }
     };
 
@@ -60,6 +58,21 @@ const Player = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className={playercss.loader}>
+        <ClipLoader color="#4fa94d" loading={loading} css={override} size={100} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={playercss.loader}>
+        <p>{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className={playercss.player}>
@@ -73,7 +86,7 @@ const Player = () => {
           />
           <div>
             <h2 className={playercss.player_course_heading} style={{ marginBottom: "1rem" }}>
-              {courseName}
+              {}
             </h2>
             <div>
               {videos.map((video, index) => (
@@ -90,7 +103,7 @@ const Player = () => {
         </>
       ) : (
         <div className={playercss.loader}>
-          <ClipLoader color="#4fa94d" loading={videos.length<=0} css={override} size={100} />
+          <p>No videos available for this course.</p>
         </div>
       )}
     </div>

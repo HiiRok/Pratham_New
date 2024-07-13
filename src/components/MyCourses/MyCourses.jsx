@@ -16,7 +16,7 @@ const MyCourses = () => {
       }
 
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/user_courses`, {
+        const response = await axios.get(`${API_BASE_URL}/api/course/userCourse`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

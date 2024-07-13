@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Grid, Paper, Typography, makeStyles } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_BASE_URL } from '../../config';
 
@@ -32,27 +33,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ResetPassword = () => {
-  const [token, setToken] = useState('');
-  const [password, setPassword] = useState('');
+const ForgotPassword = () => {
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const classes = useStyles();
+  const navigate = useNavigate();
 
-  const handleTokenChange = (event) => {
-    setToken(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/user/reset-password`, { token, password });
+      const response = await axios.post(`${API_BASE_URL}/api/user/forgot-password`, { email });
       setMessage(response.data.msg);
+      if (response.status === 201) {
+        navigate('/reset-password'); 
+      }
     } catch (error) {
-      setMessage(error.response.data.err || 'Something went wrong');
+      if (error.response) {
+
+        if (error.response.status === 400) {
+          setMessage('User email does not exist.');
+        } else if (error.response.status === 500) {
+          setMessage('Please try again later.');
+        } else {
+          setMessage('Something went wrong. Please try again.');
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        setMessage('No response from server. Please check your connection.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setMessage('Error: ' + error.message);
+      }
     }
   };
 
@@ -60,29 +75,17 @@ const ResetPassword = () => {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Typography variant="h6" gutterBottom>
-          Reset Password
+          Forgot Password
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
                 className={classes.textField}
-                label="OTP"
-                type="text"
-                value={token}
-                onChange={handleTokenChange}
-                fullWidth
-                required
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className={classes.textField}
-                label="New Password"
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
+                label="Email"
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
                 fullWidth
                 required
                 variant="outlined"
@@ -95,7 +98,7 @@ const ResetPassword = () => {
                 color="primary"
                 type="submit"
               >
-                Done
+                Send OTP
               </Button>
             </Grid>
           </Grid>
@@ -106,4 +109,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ForgotPassword;

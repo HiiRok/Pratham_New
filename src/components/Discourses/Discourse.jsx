@@ -45,7 +45,7 @@ const Discourse = () => {
     } else {
       navigate('/login');
     } 
-  }, [navigate]);
+  }, []);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);

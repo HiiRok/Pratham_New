@@ -138,7 +138,7 @@ const Login = () => {
               {loading ? <CircularProgress size={24} /> : 'Submit'}
             </Button>
           </form>
-          <Link href='#' variant='body2'>
+          <Link href='/forgot-password' variant='body2'>
             Forgot Password?
           </Link>
         </Paper>

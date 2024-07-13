@@ -58,9 +58,9 @@ const Home = ({isLoggedIn}) => {
 
        {isLoggedIn && (
         <>
-          <Button variant="contained" sx={{  width: "15rem","fontWeight":"800", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
+          <Button variant="contained" sx={{  width: "13rem","fontWeight":"800", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
               backgroundColor: "darkblue" 
-            } }} className="home_button"  color="success" onClick={()=>{navigate("/donationr")}}>
+            } }} className="home_button"  color="success" onClick={()=>{navigate("/donation")}}>
             Donate for a Cause
           </Button>
         </>
@@ -113,7 +113,7 @@ const Home = ({isLoggedIn}) => {
       <Button 
         variant="contained" 
         sx={{ 
-          width: "16rem", 
+          width: "14.5rem", 
           height: "3rem", 
           transition: "0.3s", 
           backgroundColor: "orange",

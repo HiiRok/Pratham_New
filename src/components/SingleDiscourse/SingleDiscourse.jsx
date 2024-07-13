@@ -5,7 +5,6 @@ import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import singleCourseCSS from "./SingleDiscourse.module.css";
 import { API_BASE_URL } from "../../config";
-
 import SharingButton from "../Video/Sharing";
 
 const override = `
@@ -19,61 +18,59 @@ const SingleDiscourse = () => {
   const [courseDetails, setCourseDetails] = useState(null);
   const [hasBoughtCourse, setHasBoughtCourse] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-
     const tokenKey = 'prasthan_yatna_jwt';
     const token = localStorage.getItem(tokenKey);
 
-
-    const fetchCourseDetails = async () => {
+    const fetchCourseData = async () => {
       try {
-        const response = await axios.get(
-          `${API_BASE_URL}/api/course/${id}`,{
-          headers: {
-            'Authorization': 'Bearer ' + token
+        const courseResponse = await axios.get(
+          `${API_BASE_URL}/api/course/${id}`,
+          {
+            headers: {
+              'Authorization': 'Bearer ' + token
+            }
           }
-      });
-        setCourseDetails(response.data);
-        setLoading(false); 
-      } catch (error) {
-        console.error("Error fetching course details:", error);
-        setLoading(false); 
-      }
-    };
+        );
 
-    fetchCourseDetails();
-  }, [id]);
-
-  useEffect(() => {
-    const checkCoursePurchase = async () => {
-      try {
-        const response = await axios.get(
+        const purchaseResponse = await axios.get(
           `${API_BASE_URL}/api/checkCoursePurchase/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem(
-                "prasthan_yatna_jwt"
-              )}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        setHasBoughtCourse(!response.data.hasBought);
-        
+
+        setCourseDetails(courseResponse.data);
+        setHasBoughtCourse(!purchaseResponse.data.hasBought);
+        setLoading(false); 
       } catch (error) {
-        console.error("Error checking course purchase:", error);
+        console.error("Error fetching course data:", error);
+        setError("Failed to load course data. Please try again later.");
+        setLoading(false); 
       }
     };
 
-    checkCoursePurchase();
+    fetchCourseData();
   }, [id]);
 
   if (loading) {
     return (
       <div className={singleCourseCSS.loaderContainer}>
         <ClipLoader color="#4fa94d" loading={loading} css={override} size={100} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={singleCourseCSS.errorContainer}>
+        <p>{error}</p>
       </div>
     );
   }
@@ -98,16 +95,18 @@ const SingleDiscourse = () => {
                 <span className={singleCourseCSS.label}>Duration:</span>{" "}
                 {courseDetails.duration}
               </p>
-              {!hasBoughtCourse && (              <p>
-                <span className={singleCourseCSS.label}>Price:</span>{" "}
-                {courseDetails.Price} rupees only/-
-              </p>)}
+              {!hasBoughtCourse && (
+                <p>
+                  <span className={singleCourseCSS.label}>Price:</span>{" "}
+                  {courseDetails.Price} rupees only/-
+                </p>
+              )}
             </div>
             <Button
               variant="contained"
               sx={{
-                width: "7rem",
-                height: "2rem",
+                width: "8.5rem",
+                height: "2.5rem",
                 transition: "0.3s",
                 backgroundColor: "orange",
                 fontWeight: "bold",
@@ -177,8 +176,9 @@ const SingleDiscourse = () => {
           <SharingButton url={window.location.href} title={courseDetails.Name} />
         </div>
       </div>
-    ):(<h3 className={singleCourseCSS.loaderContainer}>Something went wrong...</h3>)
-
+    ) : (
+      <h3 className={singleCourseCSS.loaderContainer}>Something went wrong...</h3>
+    )
   );
 };
 

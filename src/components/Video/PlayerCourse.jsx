@@ -9,7 +9,6 @@ function PlayerCourse({ setVideo, videoLink, videoTitle, videoDuration }) {
     >
       <h3>{videoTitle}</h3>
       <p>{videoDuration} mins</p>
-      <SharingButton url={videoLink} title={videoTitle} />
     </div>
   );
 }

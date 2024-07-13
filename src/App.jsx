@@ -18,7 +18,8 @@ import Gallery from "./components/Activity/Gallery";
 import TestimonialPage from "./components/Testimonials/TestimonialPage";
 import PrivateRoute from "./PrivateRoute";
 import ProtectedCourseRoute from "./ProtectedCourseRoutes";
-import PasswordChangeForm from "./components/LoginReigister/ResetPassword"
+import ResetPassword from "./components/LoginReigister/ResetPassword";
+import ForgotPassword from "./components/LoginReigister/ForgotPassword";
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
         <Navbar isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={<Home isLoggedIn={isLoggedIn}/>} />
-          <Route path="/donations" element={<Home isLoggedIn={isLoggedIn}/>} />
+          <Route path="/donation" element={<Home isLoggedIn={isLoggedIn}/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/discourses" element={<Discourse />} />
@@ -41,7 +42,8 @@ function App() {
           <Route path="/discourses/:id" element={<SingleDiscourse />} />
           <Route path="/mycourses" element={<PrivateRoute element={MyCourses} />} />
           <Route path="/userProfile" element={<PrivateRoute element={UserProfile} />} />
-          <Route path="/reset-password" element={<PrivateRoute element={PasswordChangeForm} />} />
+          <Route path="/reset-password" element= {<ResetPassword/>} />
+          <Route path="/forgot-password" element= {<ForgotPassword/>} />
           <Route path="/about" element={<About />} />
           <Route path="/buy-course/:id" element={<About />} />
           <Route path="*" element={<Home />} />
