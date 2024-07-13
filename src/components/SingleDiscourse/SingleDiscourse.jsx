@@ -36,7 +36,6 @@ const SingleDiscourse = () => {
           }
       });
         setCourseDetails(response.data);
-        console.log(response.data);
         setLoading(false); 
       } catch (error) {
         console.error("Error fetching course details:", error);
@@ -140,21 +139,18 @@ const SingleDiscourse = () => {
               {courseDetails.Content.map((video) => (
                 <div key={video.id} className={singleCourseCSS.videoCard}>
                   <img
-                    src={video.thumbnailUrl}
+                    src={`${API_BASE_URL}/${courseDetails.ImgPath}`}
                     alt={video.title}
                     className={singleCourseCSS.videoThumbnail}
                   />
                   <div className={singleCourseCSS.videoDetails}>
                     <h4 className={singleCourseCSS.videoTitle}>{video.title}</h4>
-                    <p className={singleCourseCSS.videoDescription}>
-                      {video.description}
-                    </p>
                     <div className={singleCourseCSS.videoMeta}>
                       <span className={singleCourseCSS.videoDuration}>
                         {video.duration}
                       </span>
                       <span className={singleCourseCSS.videoInstructor}>
-                        {video.instructor}
+                        {courseDetails.Author}
                       </span>
                     </div>
                   </div>
