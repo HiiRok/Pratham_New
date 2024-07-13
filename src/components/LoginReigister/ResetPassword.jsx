@@ -29,10 +29,20 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'green', // Change to green on hover
     },
   },
+  successMessage: {
+    color: 'green',
+    marginTop: theme.spacing(2),
+  },
+  errorMessage: {
+    color: 'red',
+    marginTop: theme.spacing(2),
+  },
 }));
 
 const PasswordChangeForm = () => {
   const [password, setPassword] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const { resetPassword } = useContext(AuthContext);
   const classes = useStyles();
 
@@ -40,9 +50,18 @@ const PasswordChangeForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    resetPassword(password);
+    setSuccessMessage('');
+    setErrorMessage('');
+
+    try {
+      await resetPassword(password);
+      setSuccessMessage('Password changed successfully.');
+    } catch (error) {
+      setErrorMessage('Failed to change password. Please try again.');
+    }
+
     setPassword('');
   };
 
@@ -76,6 +95,20 @@ const PasswordChangeForm = () => {
                 Change Password
               </Button>
             </Grid>
+            {successMessage && (
+              <Grid item xs={12}>
+                <Typography variant="body1" className={classes.successMessage}>
+                  {successMessage}
+                </Typography>
+              </Grid>
+            )}
+            {errorMessage && (
+              <Grid item xs={12}>
+                <Typography variant="body1" className={classes.errorMessage}>
+                  {errorMessage}
+                </Typography>
+              </Grid>
+            )}
           </Grid>
         </form>
       </Paper>
