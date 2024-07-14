@@ -102,9 +102,12 @@ const SingleDiscourse = () => {
                 </div>
               )}
             </div>
-            <Button
+
+          </div>
+          <Button
               variant="contained"
               className={singleCourseCSS.button}
+              style={{"width":"280px","paddingLeft":"0px","paddingRight":"0px"}}
               onClick={() => {
                 if (hasBoughtCourse) {
                   navigate(`/discourses/${id}/videos`);
@@ -115,7 +118,7 @@ const SingleDiscourse = () => {
             >
               {hasBoughtCourse ? "Begin Your Journey" : "Receive Wisdom"}
             </Button>
-          </div>
+          
         </div>
         <div className={singleCourseCSS.content}>
           <h3>Spiritual Overview</h3>
@@ -152,7 +155,7 @@ const SingleDiscourse = () => {
             </div>
           )}
         </div>
-        <div className={singleCourseCSS.sharingButtonsContainer}>
+        <div className={singleCourseCSS.sharingButtonsContainer} style={{"right":"0px"}}>
           <SharingButton url={window.location.href} title={courseDetails.Name} />
         </div>
       </div>
