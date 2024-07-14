@@ -144,6 +144,9 @@ function VideoPlayer({durVal, videoUrl, onNextVid, videoTitle }) {
         <ReactPlayer
           className={style.reactplayer}
           url={`https://vimeo.com/${vidUrl}`}
+          width={"100%"}
+          height={"100%"}
+
           ref={playerRef}
           playing={playing}
           muted={mute}
