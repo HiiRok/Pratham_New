@@ -87,35 +87,24 @@ const SingleDiscourse = () => {
           <div className={singleCourseCSS.headerContent}>
             <h1>{courseDetails.Name}</h1>
             <div className={singleCourseCSS.details}>
-              <p>
-                <span className={singleCourseCSS.label}>Author:</span>{" "}
+              <div className={singleCourseCSS.detailItem}>
+                <span className={singleCourseCSS.label}>Guru: </span>
                 {courseDetails.Author}
-              </p>
-              <p>
-                <span className={singleCourseCSS.label}>Duration:</span>{" "}
+              </div>
+              <div className={singleCourseCSS.detailItem}>
+                <span className={singleCourseCSS.label}>Duration: </span>
                 {courseDetails.duration}
-              </p>
+              </div>
               {!hasBoughtCourse && (
-                <p>
-                  <span className={singleCourseCSS.label}>Price:</span>{" "}
-                  {courseDetails.Price} rupees only/-
-                </p>
+                <div className={singleCourseCSS.detailItem}>
+                  <span className={singleCourseCSS.label}>Offering: </span>
+                  ₹{courseDetails.Price}
+                </div>
               )}
             </div>
             <Button
               variant="contained"
-              sx={{
-                width: "8.5rem",
-                height: "2.5rem",
-                transition: "0.3s",
-                backgroundColor: "orange",
-                fontWeight: "bold",
-                fontSize: "1.1rem",
-                marginTop: "20px",
-                "&:hover": {
-                  backgroundColor: "darkorange",
-                },
-              }}
+              className={singleCourseCSS.button}
               onClick={() => {
                 if (hasBoughtCourse) {
                   navigate(`/discourses/${id}/videos`);
@@ -124,50 +113,41 @@ const SingleDiscourse = () => {
                 }
               }}
             >
-              {hasBoughtCourse ? "Start" : "Buy"}
+              {hasBoughtCourse ? "Begin Your Journey" : "Receive Wisdom"}
             </Button>
           </div>
         </div>
         <div className={singleCourseCSS.content}>
-          <h3>Description:</h3>
+          <h3>Spiritual Overview</h3>
           <div className={singleCourseCSS.description}>
             <p>{courseDetails.Brief_Desc}</p>
           </div>
           <div className={singleCourseCSS.videoList}>
-            <h3>Discourse Video List:</h3>
-            <div className={singleCourseCSS.videoCards}>
-              {courseDetails.Content.map((video) => (
-                <div key={video.id} className={singleCourseCSS.videoCard}>
-                  <img
-                    src={`${API_BASE_URL}/${courseDetails.ImgPath}`}
-                    alt={video.title}
-                    className={singleCourseCSS.videoThumbnail}
-                  />
-                  <div className={singleCourseCSS.videoDetails}>
-                    <h4 className={singleCourseCSS.videoTitle}>{video.title}</h4>
-                    <div className={singleCourseCSS.videoMeta}>
-                      <span className={singleCourseCSS.videoDuration}>
-                        {video.duration}
-                      </span>
-                      <span className={singleCourseCSS.videoInstructor}>
-                        {courseDetails.Author}
-                      </span>
-                    </div>
+            <h3>Sacred Teachings</h3>
+            <ul>
+              {courseDetails.Content.map((video, index) => (
+                <li key={video.id} className={singleCourseCSS.videoItem}>
+                  <div className={singleCourseCSS.videoTitle}>
+                    {index + 1}. {video.title}
                   </div>
-                </div>
+                  <div className={singleCourseCSS.videoMeta}>
+                  
+                    <div>{courseDetails.Author}</div>
+                  </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
           {!hasBoughtCourse && (
             <div className={singleCourseCSS.buttonContainer}>
               <Button
                 variant="contained"
-                color="primary"
+                className={singleCourseCSS.button}
                 onClick={() => {
                   navigate(`/buy-course/${id}`);
                 }}
               >
-                Buy Course
+                Offer ₹{courseDetails.Price} for Enlightenment
               </Button>
             </div>
           )}
@@ -177,9 +157,11 @@ const SingleDiscourse = () => {
         </div>
       </div>
     ) : (
-      <h3 className={singleCourseCSS.loaderContainer}>Something went wrong...</h3>
+      <div className={singleCourseCSS.errorContainer}>
+        <h3>A moment of reflection is needed...</h3>
+        <p>Please refresh the page or seek guidance from our support if the issue persists.</p>
+      </div>
     )
-  );
-};
+  );}
 
 export default SingleDiscourse;

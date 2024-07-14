@@ -1,10 +1,9 @@
 import React from 'react';
-import './DiscoursesCard.css';
-import { useNavigate } from 'react-router-dom';
+import styles from './DiscoursesCard.module.css';
+import { useNavigate,Link } from 'react-router-dom';
 import { API_BASE_URL } from '../../config';
 
 const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
-  const navigate = useNavigate();
 
   const truncateText = (text, maxWords) => {
     const words = text.split(' ');
@@ -18,25 +17,17 @@ const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
   const truncatedBody = truncateText(body, 20);
   const truncatedTitle = truncateText(title, 3);
 
-  const handleViewDiscourse = () => {
-    navigate(`/discourses/${courseId}`);
-  };
+
 
   return (
-    <div className='card-container'>
-      <div className='image-container'>
-        <img src={`${API_BASE_URL}/${imageUrl}`} alt="Discourses" />
-      </div>
-      <div className='card-content'>
-        <div className='card-title'>
-          <h2>{truncatedTitle}</h2>
-        </div>
-        <div className='card-body'>
-          <p>{truncatedBody}</p>
-        </div>
-      </div>
-      <div className='btn-container'>
-        <button onClick={handleViewDiscourse}>View Discourse</button>
+    <div className={styles.card}>
+      <img src={`${API_BASE_URL}/${imageUrl}`} alt={title} className={styles.cardImage} />
+      <div className={styles.cardContent}>
+        <h3 className={styles.cardTitle}>{truncatedTitle}</h3>
+        <p className={styles.cardBody}>{truncatedBody}</p>
+        <Link to={`/discourses/${courseId}`} className={styles.cardButton}>
+          Learn More
+        </Link>
       </div>
     </div>
   );

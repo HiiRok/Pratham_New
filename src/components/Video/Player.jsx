@@ -83,6 +83,7 @@ const Player = () => {
             durVal={videos[currentVideoIndex]?.duration} 
             videoUrl={videos[currentVideoIndex]?.videoUrl} 
             onNextVid={handleNextVideo} 
+            videoTitle={videos[currentVideoIndex].title}
           />
           <div>
             <h2 className={playercss.player_course_heading} style={{ marginBottom: "1rem" }}>

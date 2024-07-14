@@ -56,7 +56,7 @@ const Discourse = () => {
   );
 
   return (
-    <>
+    <div className={styles.fullpage}>
       <div className={styles.searchContainer}>
         <input
           type="text"
@@ -83,7 +83,7 @@ const Discourse = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

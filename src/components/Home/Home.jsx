@@ -132,6 +132,7 @@ const Home = ({isLoggedIn}) => {
       </Button>
     </div>
       </div>
+      
 
       <div className="home_para">
         

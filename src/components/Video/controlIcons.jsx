@@ -55,14 +55,14 @@ const PrettoSlider = styled(Slider)({
 
 const ControlIcons = ({ showIcons , playandpause , playing, rewind, fastforward,
      currentTime, videoDuration, played, onSeek, onSeekMouseUp, muting, muted,
-     volume, volumeChange, volumeSeek, fullScreenMode, videoEnded, onNext
+     volume, volumeChange, volumeSeek, fullScreenMode, videoEnded, onNext, videoTitle
     }) => {
 
   return (
     <div className={`${style.controls__div} ${showIcons ? style.visible : ''}`} onDoubleClick={fullScreenMode}>
       <Grid container direction='row' alignItems='center' justifyContent='start' style={{ padding: 16 }}>
         <Grid item>
-          <Typography variant='h5' style={{ color: 'white' }}>Title of the video</Typography>
+          <Typography variant='h5' style={{ color: 'white' }}>{videoTitle}</Typography>
         </Grid>
       </Grid>
       <Grid container direction='row' alignItems='center' justifyContent='center'>

@@ -5,8 +5,9 @@ import screenfull from 'screenfull';
 import Container from '@mui/material/Container';
 import ControlIcons from './controlIcons';
 import { FamilyRestroomOutlined } from '@mui/icons-material';
+import { VIMEO_BASE_URL } from '../../config';
 
-function VideoPlayer({durVal, videoUrl, onNextVid }) {
+function VideoPlayer({durVal, videoUrl, onNextVid, videoTitle }) {
   const [showIcons, setShowIcons] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
   const [vidUrl, setVidUrl] = useState(videoUrl);
@@ -141,9 +142,8 @@ function VideoPlayer({durVal, videoUrl, onNextVid }) {
     <Container maxWidth='lg' onClick={handleScreenClick}>
       <div className={`${style.playerDiv} ${playerLoaded ? style.loaded : ''}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={playerDivRef}>
         <ReactPlayer
-          width={'100%'}
-          height={'100%'}
-          url={vidUrl}
+          className={style.reactplayer}
+          url={`https://vimeo.com/${vidUrl}`}
           ref={playerRef}
           playing={playing}
           muted={mute}
@@ -177,6 +177,7 @@ function VideoPlayer({durVal, videoUrl, onNextVid }) {
           fullScreenMode={handleFullScreenMode}
           videoEnded={videoEnded}
           onNext={handleNextVideo}
+          videoTitle={videoTitle}
         />
       </div>
     </Container>
