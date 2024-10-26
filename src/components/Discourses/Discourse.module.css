@@ -1,18 +1,21 @@
 .discourse {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-  background-color: #f8f4e8;
-  
+  gap: 4rem; 
   font-family: 'Cormorant Garamond', serif;
 }
 
 .fullpage{
-  background-color: #f8f4e8;
+  background-image: url('/src/assets/IMG-5.png'); /* Set the background image */
+  background-repeat: no-repeat;                   /* Prevents the image from repeating */
+  background-size: cover;                         /* Ensures the image covers the container */
+  background-position: center bottom;             /* Align the image to the center bottom */
+  height: 900px;                
   margin-top: -22px;
+  min-height: 100vh;
 }
 
 .searchContainer {
@@ -48,7 +51,7 @@
   height: 50vh;
 }
 
-.discourseCard {
+/* .discourseCard {
   background: linear-gradient(to bottom, #f8f4e8, #e6d6a8);
   border: 2px solid #b7934a;
   border-radius: 8px;
@@ -81,7 +84,7 @@
   color: #3a2f2d;
   margin: 0 1rem 1rem;
   line-height: 1.4;
-}
+} */
 
 @media (max-width: 768px) {
   .discourse {

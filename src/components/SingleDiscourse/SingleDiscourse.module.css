@@ -5,6 +5,7 @@
   background-color: #f8f4e8;
   color: #3a2f2d;
   position: relative;
+  min-height: 100vh;
   line-height: 1.8;
 }
 

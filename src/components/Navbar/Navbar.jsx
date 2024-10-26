@@ -11,7 +11,7 @@ const Navbar = ({ isLoggedIn }) => {
   return (
     <nav className={navcss.navbar}>
       <div className={navcss.navbar_logo}>
-        <img src={navLogo} alt="" />
+ 
         <Link to="/">
           <img src={navLogo2} alt="" />
         </Link>

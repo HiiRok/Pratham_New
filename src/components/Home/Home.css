@@ -1,24 +1,53 @@
 .home_image {
-    background-size: 100% 100%;
-    height: 480px;
-    background: url('/src/assets/login.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+    background-image: url('/src/assets/IMG-5.png'); /* Set the background image */
+    background-repeat: no-repeat;                   /* Prevents the image from repeating */
+    background-size: cover;                         /* Ensures the image covers the container */
+    background-position: center bottom;             /* Align the image to the center bottom */
+    height: 480px;                                 /* Default height */
+    display: flex;                                 /* Use flexbox for layout */
+    flex-direction: column;                        /* Vertical stacking of child elements */
+    justify-content: center;                       /* Center content vertically */
+    align-items: center;                           /* Centers content horizontally */
+    gap: 1rem;                                     /* Space between child elements */
+    padding: 1rem;                                 /* Inner padding */
     box-shadow: 0 4px 8px rgba(139, 69, 19, 0.5); /* Softer, brown-tinted shadow */
 }
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .home_image {
+        height: 300px;                             /* Adjust height for smaller screens */
+        background-position: center bottom;        /* Keep the position */
+    }
+}
+
+@media (max-width: 480px) {
+    .home_image {
+        height: 200px;                             /* Further adjust height for very small screens */
+        background-position: center bottom;        /* Keep the position */
+    }
+}
+
+.home_image_buttons {
+    display: flex;                     /* Enable flexbox layout */
+    flex-direction: column;            /* Stack buttons vertically */
+    justify-content: center;           /* Center items vertically */
+    align-items: center;               /* Center items horizontally */
+    width: 100%;                       /* Make the container full width */
+    gap: 1rem;                         /* Space between buttons */
+    position: absolute;                /* Position buttons absolutely within the parent */
+    top: 90%;                          /* Position from the top */
+    left: 50%;                         /* Position from the left */
+    transform: translate(-50%, -50%); /* Center the buttons */
+}
+
+
 
 .quote {
     z-index: 1;
     font-weight: 700;
     font-size: 1.2rem;
-    color: rgba(80, 40, 0, 0.9); /* Darker, richer brown */
+    color: rgba(112, 111, 111, 0.9); /* Darker, richer brown */
     width: fit-content;
     text-align: center;
     font-style: italic;
@@ -30,26 +59,25 @@
 
 .quote_author {
     z-index: 1;
-    font-size: 1rem;
-    color: rgba(139, 69, 19, 0.9); /* Matching brown */
+    font-size: 1.3rem;
+    color: rgba(72, 71, 70, 0.9); /* Matching brown */
     width: fit-content;
     text-align: center;
-    margin-left: 400px;
+    margin-left: 80px;
     font-family: 'Palatino', 'Georgia', serif;
+    font-weight: 400;
 }
 
 .home_para {
-    margin: auto;
-    margin-top: 2rem;
-    background: linear-gradient(to bottom, rgba(255, 248, 220, 0.9) 20%, rgba(255, 248, 220, 0.5) 100%), url('/src/assets/himalaya.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 400px;
+    background-image: url('/src/assets/IMG-5.png'); /* Set the background image */
+    background-repeat: no-repeat;                   /* Prevents the image from repeating */
+    background-size: cover;                         /* Ensures the image covers the container */
+    background-position: center bottom;             /* Align the image to the center bottom */
+    height: 480px;                                 /* Default height */
     padding: 2rem;
-    border: 2px solid #DAA520; /* Gold border */
-    border-radius: 10px;
+
 }
+
 
 .home_para > h2 {
     text-align: center;
@@ -72,17 +100,17 @@
 
 .home_grid {
     padding: 2rem;
-    background: linear-gradient(to bottom, rgba(255, 248, 220, 0.9) 20%, rgba(255, 248, 220, 0.5) 100%), url('/src/assets/himalaya.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-image: url('/src/assets/IMG-5.png');
+    background-repeat: no-repeat;                   /* Prevents the image from repeating */
+    background-size: cover;                         /* Ensures the image covers the container */
+    background-position: center bottom;             /* Align the image to the center bottom */
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     overflow: hidden;
-    border-top: 2px solid #DAA520; /* Gold border top */
-    border-bottom: 2px solid #DAA520; /* Gold border bottom */
+    height: 900px; 
+ 
 }
 
 .home_grid_carousel {
@@ -96,7 +124,13 @@
 .home_carousel {
     transition: 0.3s;
     animation: ease-in;
+    border: 1px solid #DAA520; 
     box-shadow: 0 0 15px rgba(139, 69, 19, 0.3); /* Soft brown shadow */
+    min-width: 200px; /* Set a minimum width as needed */
+    max-width: 800px; /* Set a maximum width as needed */
+    min-height: 300px; /* Set a minimum height as needed */
+    max-height: 500px; /* Set a maximum height as needed */
+    object-fit: fill; /* Stretch the image to fill the container */
 }
 
 .home_carousel:hover {
@@ -105,12 +139,18 @@
 }
 
 .home_carousel_image {
-    width: 100%; 
-    min-width: none;
-    object-fit: contain;
+    width: 100%;
+    min-width: 200px; /* Set a minimum width as needed */
+    max-width: 800px; /* Set a maximum width as needed */
+    min-height: 300px; /* Set a minimum height as needed */
+    max-height: 500px; /* Set a maximum height as needed */
+    object-fit: fill; /* Stretch the image to fill the container */
     transition: transform 0.3s ease-in;
-    border: 2px solid #DAA520; /* Gold border */
+    border: 1px solid #DAA520; /* Gold border */
+    display: block; /* Ensures no extra space below the image */
 }
+
+
 
 .home_carousel_image:hover {
     transform: scale(1.03);
@@ -129,16 +169,58 @@
     font-family: 'Palatino', 'Georgia', serif;
 }
 
-.home_button {
-    transition: 0.3s;
-    animation: ease-in;
-    background-color: #800020 !important; /* Deep burgundy */
-    color: #F0E68C !important; /* Khaki */
-    border: 2px solid #DAA520 !important; /* Gold border */
+
+  
+  /* Base button styles */
+  .button {
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: white;
+  }
+  
+  .login-button {
+    background-color: #0341be;
+    background-image: 
+        linear-gradient(to bottom, #000080, #6175d0), /* Original gradient */
+        linear-gradient(to top left, rgba(255, 255, 255, 0.782), transparent 10%); /* Shine effect */
+    border: 0 solid #000033;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px; /* Optional: adjust padding for better size */
+    color: white; /* Change text color for visibility */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-image 0.3s; /* Smooth transition for hover effects */
 }
 
-.home_button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(218, 165, 32, 0.5) !important; /* Gold shadow */
-    background-color: #4B0082 !important; /* Indigo on hover */
+/* Optional: Add hover effect */
+.login-button:hover {
+    background-image: 
+        linear-gradient(to bottom, #000066, #2222e1), /* Original gradient */
+        linear-gradient(to top left, rgba(255, 255, 255, 0.4), transparent 50%); /* Enhanced shine effect on hover */
 }
+
+  
+  .login-button:active {
+
+    transform: translateY(1px);
+  }
+  
+  /* Member button styles */
+  .member-button {
+    background-color: #556B2F;
+    background-image: linear-gradient(to bottom, #668B34, #556B2F);
+
+
+  }
+  
+  .member-button:hover {
+    background-image: linear-gradient(to bottom, #556B2F, #445620);
+  }
+  
+  .member-button:active {
+    transform: translateY(1px);
+  }

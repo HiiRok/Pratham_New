@@ -1,11 +1,15 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-html {
-  zoom: 96%; 
-  margin: 0%;
-}
 body {
-  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* This makes the main content area take up the remaining space */
 }

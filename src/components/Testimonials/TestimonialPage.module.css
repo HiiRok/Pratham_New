@@ -5,6 +5,7 @@
   gap: 0px;
   justify-items: center; 
   row-gap: 80px;
+  min-height: 100vh;
 }
 
 .card {

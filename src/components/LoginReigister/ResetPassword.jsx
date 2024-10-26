@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: 600,
+    minHeight: "100vh",
   },
   paper: {
     padding: theme.spacing(3),

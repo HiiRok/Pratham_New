@@ -13,9 +13,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: theme.spacing(3),
     backgroundColor: theme.palette.background.paper,
+    maxHeight: '200vh',
   },
   form: {
     width: '400px',
+    maxHeight: '300px',
     marginTop: theme.spacing(1),
   },
   input: {

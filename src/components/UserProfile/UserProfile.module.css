@@ -6,6 +6,8 @@
     align-items: center;
     height: 50vh;
     background-color: #ffffff;
+    min-height: 100vh;
+    margin-top: -8rem;
   }
   
   .card {

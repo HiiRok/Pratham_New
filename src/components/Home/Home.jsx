@@ -12,7 +12,7 @@ const Home = ({isLoggedIn}) => {
   
   const navigate = useNavigate();
 
-  const defaultImageUrl = 'src/assets/login.jpg';
+  const defaultImageUrl = 'src/assets/IMG-5.png';
   window.scrollTo(0, 0);
 
 
@@ -41,30 +41,31 @@ const Home = ({isLoggedIn}) => {
   return (
     <div className="home">
       <div className="home_image">
-      <h1 className="quote">" The need not to journey,to sit still,is the greatest journey."<h2 className="quote_author">-Raina Bhattacharjee.</h2></h1>
+      <h1 className="quote">" The need not to journey,to sit still,<br/>
+      is the greatest journey."<h2 className="quote_author">~Raina Bhattacharjee.</h2></h1>
       
        {!isLoggedIn && (
-        <>
+        <div className="home_image_buttons">
         <Button variant="contained" sx={{ width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
-            backgroundColor: "darkblue"} }} className="home_button" onClick={()=>{navigate("/login")}}>
+            backgroundColor: "darkblue"} }} className="button login-button" onClick={()=>{navigate("/login")}}>
           LOGIN
         </Button>
         <Button variant="contained" sx={{  width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
             backgroundColor: "darkblue" 
-          } }} className="home_button"  color="success" onClick={()=>{navigate("/register")}}>
+          } }} className="button member-button"  color="success" onClick={()=>{navigate("/register")}}>
           Become a member
         </Button>
-        </>        
+        </div>        
        )}
 
        {isLoggedIn && (
-        <>
+        <div className="home_image_buttons">
           <Button variant="contained" sx={{  width: "14rem","fontWeight":"800", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
               backgroundColor: "darkblue" 
-            } }} className="home_button"  color="success" onClick={()=>{navigate("/donation")}}>
+            } }} className="button member-button"  color="success" onClick={()=>{navigate("/donation")}}>
             Donate for a Cause
           </Button>
-        </>
+        </div>
        )}
 
 
@@ -121,6 +122,7 @@ const Home = ({isLoggedIn}) => {
           fontWeight:"bolder",
           fontSize: "1.1rem",
           marginTop:'-40px',
+          marginLeft:"10px",
           '&:hover': {
             backgroundColor: "darkorange" // Change background color on hover
           }
