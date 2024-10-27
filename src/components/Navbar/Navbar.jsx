@@ -17,18 +17,18 @@ const Navbar = ({ isLoggedIn }) => {
         </Link>
       </div>
       <div className={navcss.navbar_links}>
-        <NavLink to={"/"}>HOME</NavLink>
-        <NavLink to={"/discourses"}>DISCOURSES</NavLink>
-        <NavLink to={"/poems"}>POEMS</NavLink>
-        <NavLink to={"/activity"}>ACTIVITY</NavLink>
-        <NavLink to={"/testimonials"}>TESTIMONIAL</NavLink>
-        <NavLink to={"/donations"}>DONATION</NavLink>
-        <NavLink to={"/about"}>ABOUT</NavLink>
+        <NavLink to={"/"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>HOME</NavLink>
+        <NavLink to={"/discourses"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>DISCOURSES</NavLink>
+        <NavLink to={"/poems"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>POEMS</NavLink>
+        <NavLink to={"/activity"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>ACTIVITY</NavLink>
+        <NavLink to={"/testimonials"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>TESTIMONIAL</NavLink>
+        <NavLink to={"/donations"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>DONATION</NavLink>
+        <NavLink to={"/about"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>ABOUT</NavLink>
         
         {isLoggedIn ? (
           <UserMenu/>
         ) : (
-          <NavLink to={"/login"}>LOGIN</NavLink>
+          <NavLink to={"/login"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>LOGIN</NavLink>
         )}
       </div>
     </nav>
