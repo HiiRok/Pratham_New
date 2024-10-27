@@ -68,9 +68,11 @@
   transform: scale(0.95); 
 }
 
-/* Persistent active style */
+
 .navbar_links a.active {
   color: #ffffff;
   text-decoration: underline;
-  transform: scale(1.05); /* Slightly enlarge to indicate active */
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  transform: scale(1.05); 
 }
