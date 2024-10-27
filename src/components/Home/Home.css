@@ -109,7 +109,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     overflow: hidden;
-    height: 900px; 
+    height: 850px; 
+
  
 }
 
