@@ -165,7 +165,7 @@
 
 .home_carousel_image {
     width: 100%; /* Ensures image fills the cell’s width */
-    height: 400px; /* Maintains aspect ratio */
+    max-height: 400px; /* Maintains aspect ratio */
     object-fit: contain; /* Adjusts image to fill cell without stretching */
 }
 
