@@ -22,7 +22,7 @@ const Navbar = ({ isLoggedIn }) => {
         <NavLink to={"/poems"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>POEMS</NavLink>
         <NavLink to={"/activity"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>ACTIVITY</NavLink>
         <NavLink to={"/testimonials"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>TESTIMONIAL</NavLink>
-        <NavLink to={"/donations"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>DONATION</NavLink>
+        {/* <NavLink to={"/donations"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>DONATION</NavLink> */}
         <NavLink to={"/about"} className={({ isActive }) => isActive ? `${navcss.active}` : ''}>ABOUT</NavLink>
         
         {isLoggedIn ? (

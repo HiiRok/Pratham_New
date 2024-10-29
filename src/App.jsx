@@ -20,10 +20,23 @@ import PrivateRoute from "./PrivateRoute";
 import ProtectedCourseRoute from "./ProtectedCourseRoutes";
 import ResetPassword from "./components/LoginReigister/ResetPassword";
 import ForgotPassword from "./components/LoginReigister/ForgotPassword";
+import { useEffect,useState } from "react";
+import GreetingModal from "./GreetingModal";
 
 
 function App() {
   const { isLoggedIn } = useContext(AuthContext);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  // Show the modal when the component mounts
+  useEffect(() => {
+      setModalOpen(true);
+  }, []);
+
+  // Function to close the modal
+  const closeModal = () => {
+      setModalOpen(false);
+  };
 
   return (
     <>
@@ -52,6 +65,8 @@ function App() {
           <p>Copyright &copy; 2024 PrasthanYatnam.org. All rights reserved.</p>
       </footer>
       </Router>
+
+      <GreetingModal isOpen={isModalOpen} onClose={closeModal} />
 
     </>
   );

@@ -62,8 +62,8 @@ const Home = ({isLoggedIn}) => {
         <div className="home_image_buttons">
           <Button variant="contained" sx={{  width: "14rem","fontWeight":"800", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
               backgroundColor: "darkblue" 
-            } }} className="button member-button"  color="success" onClick={()=>{navigate("/donation")}}>
-            Donate for a Cause
+            } }} className="button member-button"  color="success" >
+            Welcome
           </Button>
         </div>
        )}
@@ -71,14 +71,18 @@ const Home = ({isLoggedIn}) => {
 
         
       </div>
+      <div className="home_grid_background">
+      <section class="upcoming-courses-section">
+        <h2 class="section-header-static static-header">Latest Discourses</h2>
+    </section>
       <div className="home_grid">
         <div className="home_grid_carousel">
           <Carousel interval={3000} className="home_carousel">
-            <img src={homeImage}  alt="" width={"100%"} />
-            <img src={homeCarouselImage} alt="" width={"100%"} />
+            <img src={homeImage} onClick={()=>{}}  alt="" width={"100%"}  height={"300px"}/>
+            {/* <img src={homeCarouselImage} alt="" width={"100%"} /> */}
           </Carousel>
         </div>
-        <div>
+        {/* <div>
           <h2>
             Upcoming Discourse: <br />
             Divine Mother
@@ -97,45 +101,55 @@ const Home = ({isLoggedIn}) => {
           >
             Attend Class
           </Button>
-        </div>
-        {
-          trendCourses.map(trendCourse => (
-    <Link key={trendCourse.courseId} to={`/discourses/${trendCourse.courseId}`} state={{ course: trendCourse }}>
-        <img 
-            src={`${API_BASE_URL}/${trendCourse.ImgPath}` || defaultImageUrl} 
-            alt={trendCourse.title || "Course Image"} 
-            className="home_carousel_image" 
-            onError={(e) => { e.target.src = defaultImageUrl; }} // Handle broken image links
-        />
-    </Link>
-))
+        </div> */}
+      </div>
+      <section class="upcoming-courses-section">
+        <h2 class="section-header blinking-header">Upcoming Discourses. Stay tuned!</h2>
+    </section>
+
+      <div className="home_grid_2">
+      {
+          trendCourses
+              .filter(trendCourse => trendCourse.Name !== "Himalaya")
+              .map(trendCourse => (
+                <Link key={trendCourse.courseId} to={`/discourses/${trendCourse.courseId}`} state={{ course: trendCourse }}>
+                  <img 
+                    src={`${API_BASE_URL}/${trendCourse.ImgPath}` || defaultImageUrl} 
+                    alt={trendCourse.title || "Course Image"} 
+                    className="home_carousel_image" 
+                    onError={(e) => { e.target.src = defaultImageUrl; }} // Handle broken image links
+                  />
+                </Link>
+              ))
 		
-	}
-        <div style={{ display: 'flex', justifyContent: 'center', marginRight: '-820px' }}>
-      <Button 
-        variant="contained" 
-        sx={{ 
-          width: "16rem", 
-          height: "3rem", 
-          transition: "0.3s", 
-          backgroundColor: "orange",
-          fontWeight:"bolder",
-          fontSize: "1.1rem",
-          marginTop:'-40px',
-          marginLeft:"10px",
-          '&:hover': {
-            backgroundColor: "darkorange" // Change background color on hover
-          }
-        }} 
-        className="home_button" 
-        onClick={() => { navigate("/discourses") }}
-      >
-        VIEW ALL DISCOURSES
-      </Button>
-    </div>
+	      }
+
+       
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', marginRight: '0px',marginTop: '40px' }}>
+        <Button 
+          variant="contained" 
+          sx={{ 
+            width: "16rem", 
+            height: "3rem", 
+            transition: "0.3s", 
+            backgroundColor: "orange",
+            fontWeight:"bolder",
+            fontSize: "1.1rem",
+            marginTop:'-40px',
+            marginLeft:"10px",
+            '&:hover': {
+              backgroundColor: "darkorange" // Change background color on hover
+            }
+          }} 
+          className="home_button" 
+          onClick={() => { navigate("/discourses") }}
+        >
+          VIEW ALL DISCOURSES
+        </Button>
+       </div>
       </div>
       
-
       <div className="home_para">
         
         <h2>FOUNDER CUM DIRECTOR&apos;S MESSAGE</h2>

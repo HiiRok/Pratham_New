@@ -25,9 +25,13 @@ const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
       <div className={styles.cardContent}>
         <h3 className={styles.cardTitle}>{truncatedTitle}</h3>
         <p className={styles.cardBody}>{truncatedBody}</p>
+        {title === "Divine Mother" ?  
         <Link to={`/discourses/${courseId}`} className={styles.cardButton}>
-          Learn More
-        </Link>
+          View now
+        </Link>:<Link  className={styles.cardButton}>
+          Upcoming
+        </Link>}
+
       </div>
     </div>
   );

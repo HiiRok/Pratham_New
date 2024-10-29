@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import GalleryItem from './GalleryItem'; 
 import GalleryModal from './GalleryModal'; 
 import styles from './Gallery.module.css'; 
+import UnderConstruction from '../../underconstrunction';
 
 const Gallery = () => {
   const [selectedGallery, setSelectedGallery] = useState(null); // State to track the selected gallery
@@ -48,17 +49,18 @@ const Gallery = () => {
   };
 
   return (
-    <div className={styles.galleryPage}>
-      <h1></h1>
-      <div className={styles.gallery}>
-        {galleries.map((gallery) => (
-          <GalleryItem key={gallery.id} gallery={gallery} onClick={() => handleGalleryItemClick(gallery)} />
-        ))}
-      </div>
-      {selectedGallery && (
-        <GalleryModal gallery={selectedGallery} onClose={handleCloseModal} />
-      )}
-    </div>
+    // <div className={styles.galleryPage}>
+    //   <h1></h1>
+    //   <div className={styles.gallery}>
+    //     {galleries.map((gallery) => (
+    //       <GalleryItem key={gallery.id} gallery={gallery} onClick={() => handleGalleryItemClick(gallery)} />
+    //     ))}
+    //   </div>
+    //   {selectedGallery && (
+    //     <GalleryModal gallery={selectedGallery} onClose={handleCloseModal} />
+    //   )}
+    // </div>
+    <UnderConstruction/>
   );
 };
 
