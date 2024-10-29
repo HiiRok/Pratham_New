@@ -75,6 +75,7 @@
     background-position: center bottom;             /* Align the image to the center bottom */
     height: 580px;                                 /* Default height */
     padding: 2rem;
+    margin-top: 50px
 
 }
 
@@ -104,7 +105,7 @@
     background-repeat: no-repeat;                   /* Prevents the image from repeating */
     background-size: cover;                         /* Ensures the image covers the container */
     background-position: center bottom; 
-    height: 1060px;             /* Align the image to the center bottom */
+    height: 900px;             /* Align the image to the center bottom */
 }
 .home_grid {
     display: grid;
@@ -130,8 +131,8 @@
     align-items: center;
     justify-content: center;
     padding: 1rem; /* Padding inside each cell */
-    max-width: 500px; /* Controls max width of each cell */
-    max-height: 500px; /* Controls max height of each cell */
+    max-width: 400px; /* Controls max width of each cell */
+    max-height: 400px; /* Controls max height of each cell */
     box-sizing: border-box;
 
 }
@@ -235,7 +236,7 @@
  /* Base section header styling */
 .section-header {
     text-align: center; /* Center-aligns text in the section */
-    padding: 20px; /* Padding inside the section */
+    padding: 10px; /* Padding inside the section */
     background-color: transparent; /* Set background color to white */
     border-radius: 5px; /* Rounded corners for the section */
     margin: 20px auto; /* Center the section block with margin */
@@ -247,7 +248,7 @@
 
 .section-header-static {
     text-align: center; /* Center-aligns text in the section */
-    padding: 20px; /* Padding inside the section */
+    padding: 10px; /* Padding inside the section */
     background-color: transparent; /* Set background color to white */
     border-radius: 5px; /* Rounded corners for the section */
     margin: 20px auto; /* Center the section block with margin */
@@ -261,7 +262,7 @@
 /* Blinking section header */
 .blinking-header {
     color: #007bff; /* Initial header text color */
-    font-size: 2rem; /* Font size for the header */
+    font-size: 1.5rem; /* Font size for the header */
     font-weight: bold; /* Bold font for emphasis */
     position: relative; /* Position for pseudo-element */
     z-index: 1; /* Ensure header is above the border */
@@ -285,7 +286,7 @@
 /* Static section header */
 .static-header {
     color: #c99b03; /* Initial header text color */
-    font-size: 2rem; /* Font size for the header */
+    font-size: 1.5rem; /* Font size for the header */
     font-weight: bold; /* Bold font for emphasis */
     border: 5px solid #c99b03;
 

@@ -11,7 +11,7 @@
   background-size: cover;              /* Makes the image cover the container */
   background-position: center;         
   background-repeat: no-repeat;
-  height: 12rem;                        /* Default height for larger screens */
+  height: 10.5rem;                        /* Default height for larger screens */
   width: 100%;                         
   display: grid;
   margin: 0;
