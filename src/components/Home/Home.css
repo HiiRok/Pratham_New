@@ -73,7 +73,7 @@
     background-repeat: no-repeat;                   /* Prevents the image from repeating */
     background-size: cover;                         /* Ensures the image covers the container */
     background-position: center bottom;             /* Align the image to the center bottom */
-    height: 580px;                                 /* Default height */
+    height: 510px;                                 /* Default height */
     padding: 2rem;
     margin-top: 50px
 
