@@ -27,6 +27,17 @@
     text-align: center; /* Center align text */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
 }
+.modal-content h2{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.modal-content p{
+    text-align: center;
+    line-height: 1.4;
+}
+
+
 
 /* Button styles */
 #close-modal {

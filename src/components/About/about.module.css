@@ -19,7 +19,7 @@
   }
   
   .aboutHeader h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 10px;
     color: #12276d;; /* Changed color to a warm brown for a legacy look */
     font-family: 'Playfair Display', serif; /* Added a different font for the heading */
@@ -36,7 +36,7 @@
   }
   
   .aboutContent h2 {
-    font-size: 2rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
     text-align: left;
     color: #12276d; /* Reused the warm brown color for headings */

@@ -41,7 +41,7 @@ const Home = ({isLoggedIn}) => {
   return (
     <div className="home">
       <div className="home_image">
-      <h1 className="quote">" The need not to journey,to sit still,<br/>
+      <h1 className="quote">" The need not to journey,to sit still, 
       is the greatest journey."<h2 className="quote_author">~Raina Bhattacharjee.</h2></h1>
       
        {!isLoggedIn && (
@@ -73,7 +73,7 @@ const Home = ({isLoggedIn}) => {
       </div>
       <div className="home_grid_background">
       <section class="upcoming-courses-section">
-        <h2 class="section-header-static static-header">Latest Discourses</h2>
+        <h2 class="section-header-static static-header">Click on the image to attend the discourse</h2>
     </section>
       <div className="home_grid">
         <div className="home_grid_carousel">
@@ -81,7 +81,16 @@ const Home = ({isLoggedIn}) => {
             <img src={homeImage} onClick={()=>{}}  alt="" width={"100%"}  height={"300px"}/>
             {/* <img src={homeCarouselImage} alt="" width={"100%"} /> */}
           </Carousel>
+
         </div>
+
+        <div className="home_grid_text">
+    <h2>Discourse On:</h2>
+    <p>‘Divine Mother: Getting rid of misconceptions regarding Maa Kali and the facts and the spiritual interpretation’</p>
+</div>
+
+
+
         {/* <div>
           <h2>
             Upcoming Discourse: <br />
@@ -104,7 +113,7 @@ const Home = ({isLoggedIn}) => {
         </div> */}
       </div>
       <section class="upcoming-courses-section">
-        <h2 class="section-header blinking-header">Upcoming Discourses. Stay tuned!</h2>
+        <h2 class="section-header blinking-header">Upcoming Discourses</h2>
     </section>
 
       <div className="home_grid_2">
@@ -126,28 +135,7 @@ const Home = ({isLoggedIn}) => {
 
        
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginRight: '0px',marginTop: '40px' }}>
-        <Button 
-          variant="contained" 
-          sx={{ 
-            width: "16rem", 
-            height: "3rem", 
-            transition: "0.3s", 
-            backgroundColor: "orange",
-            fontWeight:"bolder",
-            fontSize: "1.1rem",
-            marginTop:'-40px',
-            marginLeft:"10px",
-            '&:hover': {
-              backgroundColor: "darkorange" // Change background color on hover
-            }
-          }} 
-          className="home_button" 
-          onClick={() => { navigate("/discourses") }}
-        >
-          VIEW ALL DISCOURSES
-        </Button>
-       </div>
+      
       </div>
       
       <div className="home_para">
@@ -162,7 +150,7 @@ const Home = ({isLoggedIn}) => {
         We at Prasthan Yatnam, understand spirituality to be Universility.Thus we are making a humble attempt to provide a soothing healthy atmosphere, free from any kind of dogma/prejudice/fanatism/cultism for a balanced holistic overall growth of.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-        <Button variant="contained" sx={{ width: "13rem", transition:"0.3s",backgroundColor:"navy",marginTop:"50px" ,          '&:hover': {
+        <Button variant="contained" sx={{ width: "13rem", transition:"0.3s",backgroundColor:"navy",marginTop:"50px",marginLeft:"20px" ,          '&:hover': {
             backgroundColor: "darkblue" 
           }}} className="home_button" onClick={()=>{navigate("/about")}}>
           KNOW MORE ABOUT US
