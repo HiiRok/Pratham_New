@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider';
 import { API_BASE_URL } from '../../config';
 
+import { Link as RouterLink } from 'react-router-dom'; 
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -208,7 +210,7 @@ const Register = () => {
               Register
             </Button>
           </form>
-          <Link href="/login" variant="body2">
+          <Link component={RouterLink} to="/login" variant="body2">
             Already have an account? Login
           </Link>
         </Paper>

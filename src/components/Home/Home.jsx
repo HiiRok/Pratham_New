@@ -53,7 +53,7 @@ const Home = ({isLoggedIn}) => {
         <Button variant="contained" sx={{  width: "13rem", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
             backgroundColor: "darkblue" 
           } }} className="button member-button"  color="success" onClick={()=>{navigate("/register")}}>
-          Become a member
+          Register
         </Button>
         </div>        
        )}

@@ -1,9 +1,9 @@
-// src/components/LoginReigister/Login.js
 import React, { useState, useContext } from 'react';
-import { Button, TextField, Grid, Paper, Typography, Link, CircularProgress, makeStyles } from '@material-ui/core';
+import { Button, TextField, Grid, Paper, Typography,  CircularProgress,Link, makeStyles } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider';
 import { API_BASE_URL } from '../../config';
+import { Link as RouterLink } from 'react-router-dom'; 
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -83,7 +83,7 @@ const Login = () => {
     .then(data => {
       if (data.token) {
         login(data.token);
-  			localStorage.setItem('prasthan_yatna_jwt', data.token);
+        localStorage.setItem('prasthan_yatna_jwt', data.token);
         navigate("/");
       }
     })
@@ -98,6 +98,13 @@ const Login = () => {
         <Paper variant='elevation' elevation={2} className={classes.paper}>
           <Typography component='h1' variant='h5'>
             Log in
+          </Typography>
+          <Typography variant='body2' align='center'>
+            If you don't have an account, please{' '}
+            <Link component={RouterLink} to='/register' variant='body2'>
+              Register
+            </Link>
+            .
           </Typography>
           <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
@@ -140,7 +147,7 @@ const Login = () => {
               {loading ? <CircularProgress size={24} /> : 'Submit'}
             </Button>
           </form>
-          <Link href='/forgot-password' variant='body2'>
+          <Link component={RouterLink} to='/forgot-password' variant='body2'>
             Forgot Password?
           </Link>
         </Paper>
