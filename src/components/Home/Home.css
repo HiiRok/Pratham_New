@@ -132,7 +132,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background-color: #ffffff;
+    background-color: transparent;
     border: 2px solid #ddd;
     border-radius: 12px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
@@ -198,6 +198,7 @@
     min-height: 300px; /* Set a minimum height as needed */
     max-height: 500px; /* Set a maximum height as needed */
     object-fit: fill; /* Stretch the image to fill the container */
+    cursor: pointer;
 }
 
 .home_carousel:hover {

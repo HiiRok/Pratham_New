@@ -27,7 +27,7 @@ const DiscoursesCard = ({ courseId, title, imageUrl, body }) => {
         <p className={styles.cardBody}>{truncatedBody}</p>
         {title === "Divine Mother" ?  
         <Link to={`/discourses/${courseId}`} className={styles.cardButton}>
-          View now
+        ATTEND DISCOURSE
         </Link>:<Link  className={styles.cardButton}>
           Upcoming
         </Link>}

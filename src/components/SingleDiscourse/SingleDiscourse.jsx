@@ -88,12 +88,13 @@ const SingleDiscourse = () => {
             <h1>{courseDetails.Name}</h1>
             <div className={singleCourseCSS.details}>
               <div className={singleCourseCSS.detailItem}>
-                <span className={singleCourseCSS.label}>Guru: </span>
+                <span className={singleCourseCSS.label}>Facilitator: </span>
                 {courseDetails.Author}
               </div>
               <div className={singleCourseCSS.detailItem}>
                 <span className={singleCourseCSS.label}>Duration: </span>
-                {courseDetails.duration}
+                <h5>Divine Mother PART 1, 23:15 minutes</h5>
+                <h5>Divine-Mother-PART2, 26:59 minutes</h5>
               </div>
               {!hasBoughtCourse && (
                 <div className={singleCourseCSS.detailItem}>
@@ -109,11 +110,11 @@ const SingleDiscourse = () => {
               className={singleCourseCSS.button}
               style={{"width":"280px","paddingLeft":"0px","paddingRight":"0px"}}
               onClick={() => {
-                if (hasBoughtCourse) {
+                // if (hasBoughtCourse) {
                   navigate(`/discourses/${id}/videos`);
-                } else {
-                  navigate(`/buy-course/${id}`);
-                }
+                // } else {
+                //   navigate(`/buy-course/${id}`);
+                // }
               }}
             >
               {hasBoughtCourse ? "Begin Your Journey" : "Receive Wisdom"}
@@ -121,12 +122,12 @@ const SingleDiscourse = () => {
           
         </div>
         <div className={singleCourseCSS.content}>
-          <h3>Spiritual Overview</h3>
+          <h3>BACKGROUND</h3>
           <div className={singleCourseCSS.description}>
             <p>{courseDetails.Brief_Desc}</p>
           </div>
           <div className={singleCourseCSS.videoList}>
-            <h3>Sacred Teachings</h3>
+            <h3>DISCOURSE PARTS</h3>
             <ul>
               {courseDetails.Content.map((video, index) => (
                 <li key={video.id} className={singleCourseCSS.videoItem}>

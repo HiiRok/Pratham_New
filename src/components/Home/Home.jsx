@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import { useState,useEffect } from "react";
 import "./Home.css";
 import homeImage from "../../assets/Divine-mother-22.08.2023-OK.jpg";
+import disourse1 from "../../assets/hinduism.jpg"
+import discourse2 from "../../assets/saiBaba.jpg"
 import homeCarouselImage from "../../assets/BHAJAGOVINDAM-OK.png";
 import Carousel from "react-material-ui-carousel";
 import { useNavigate,Link } from "react-router-dom";
@@ -42,7 +44,7 @@ const Home = ({isLoggedIn}) => {
     <div className="home">
       <div className="home_image">
       <h1 className="quote">" The need not to journey,to sit still, 
-      is the greatest journey."<h2 className="quote_author">~Raina Bhattacharjee.</h2></h1>
+      is the greatest journey."<h2 className="quote_author">~Raina Bhattacharjee</h2></h1>
       
        {!isLoggedIn && (
         <div className="home_image_buttons">
@@ -58,7 +60,7 @@ const Home = ({isLoggedIn}) => {
         </div>        
        )}
 
-       {isLoggedIn && (
+       {/* {isLoggedIn && (
         <div className="home_image_buttons">
           <Button variant="contained" sx={{  width: "14rem","fontWeight":"800", transition:"0.3s",backgroundColor: "#000080",'&:hover': {
               backgroundColor: "darkblue" 
@@ -66,7 +68,7 @@ const Home = ({isLoggedIn}) => {
             Welcome
           </Button>
         </div>
-       )}
+       )} */}
 
 
         
@@ -78,16 +80,16 @@ const Home = ({isLoggedIn}) => {
       <div className="home_grid">
         <div className="home_grid_carousel">
           <Carousel interval={3000} className="home_carousel">
-            <img src={homeImage} onClick={()=>{}}  alt="" width={"100%"}  height={"300px"}/>
+            <img src={homeImage} onClick={() => navigate('/discourses/672364123bc640264e9a7bd8')} alt="" width={"100%"}  height={"300px"}/>
             {/* <img src={homeCarouselImage} alt="" width={"100%"} /> */}
           </Carousel>
 
         </div>
 
         <div className="home_grid_text">
-    <h2>Discourse On:</h2>
-    <p>‘Divine Mother: Getting rid of misconceptions regarding Maa Kali and the facts and the spiritual interpretation’</p>
-</div>
+          <h2>Discourse On:</h2>
+          <p>‘Divine Mother: Getting rid of misconceptions regarding Maa Kali and the facts and the spiritual interpretation’</p>
+        </div>
 
 
 
@@ -116,7 +118,7 @@ const Home = ({isLoggedIn}) => {
         <h2 class="section-header blinking-header">Upcoming Discourses</h2>
     </section>
 
-      <div className="home_grid_2">
+      {/* <div className="home_grid_2">
       {
           trendCourses
               .filter(trendCourse => trendCourse.Name !== "Himalaya")
@@ -126,15 +128,31 @@ const Home = ({isLoggedIn}) => {
                     src={`${API_BASE_URL}/${trendCourse.ImgPath}` || defaultImageUrl} 
                     alt={trendCourse.title || "Course Image"} 
                     className="home_carousel_image" 
-                    onError={(e) => { e.target.src = defaultImageUrl; }} // Handle broken image links
+                    onError={(e) => { e.target.src = defaultImageUrl; }} 
                   />
                 </Link>
               ))
 		
 	      }
+      </div> */}
 
-       
-      </div>
+      <div className="home_grid_2">
+  <Link to="/discourses/672364123bc640264e9a7bd8" state={{ courseId: "672364123bc640264e9a7bd8" }}>
+    <img 
+       src={disourse1}
+      alt="Discourse" 
+      className="home_carousel_image"
+    />
+  </Link>
+
+  <Link to="/discourses/anotherCourseId" state={{ courseId: "anotherCourseId" }}>
+    <img 
+       src={discourse2} 
+      alt="Discourse" 
+      className="home_carousel_image"
+    />
+  </Link>
+</div>
       
       </div>
       

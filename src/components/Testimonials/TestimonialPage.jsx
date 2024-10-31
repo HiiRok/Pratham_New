@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import testimonialPageStyles from './TestimonialPage.module.css';
+import UnderConstruction from '../../underconstrunction';
 
 const TestimonialPage = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -40,15 +41,16 @@ const TestimonialPage = () => {
   }, []);
 
   return (
-    <div className={testimonialPageStyles.container}>
-      {testimonials.map((testimonial) => (
-        <div key={testimonial.id} className={testimonialPageStyles.card}>
-          <img src={testimonial.avatar} alt={testimonial.name} className={testimonialPageStyles.avatar} />
-          <h3 className={testimonialPageStyles.name}>{testimonial.name}</h3>
-          <p className={testimonialPageStyles.message}>{testimonial.message}</p>
-        </div>
-      ))}
-    </div>
+    // <div className={testimonialPageStyles.container}>
+    //   {testimonials.map((testimonial) => (
+    //     <div key={testimonial.id} className={testimonialPageStyles.card}>
+    //       <img src={testimonial.avatar} alt={testimonial.name} className={testimonialPageStyles.avatar} />
+    //       <h3 className={testimonialPageStyles.name}>{testimonial.name}</h3>
+    //       <p className={testimonialPageStyles.message}>{testimonial.message}</p>
+    //     </div>
+    //   ))}
+    // </div>
+    <UnderConstruction/>
   );
 };
 
