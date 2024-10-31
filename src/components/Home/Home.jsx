@@ -14,6 +14,14 @@ const Home = ({isLoggedIn}) => {
   
   const navigate = useNavigate();
 
+  const handleNavigation = () => {
+    if (isLoggedIn) {
+      navigate('/discourses/672364123bc640264e9a7bd8');
+    } else {
+      navigate('/login');
+    }
+  };
+
   const defaultImageUrl = 'src/assets/IMG-5.png';
   window.scrollTo(0, 0);
 
@@ -80,7 +88,7 @@ const Home = ({isLoggedIn}) => {
       <div className="home_grid">
         <div className="home_grid_carousel">
           <Carousel interval={3000} className="home_carousel">
-            <img src={homeImage} onClick={() => navigate('/discourses/672364123bc640264e9a7bd8')} alt="" width={"100%"}  height={"300px"}/>
+            <img src={homeImage} onClick={handleNavigation} alt="" width={"100%"}  height={"300px"}/>
             {/* <img src={homeCarouselImage} alt="" width={"100%"} /> */}
           </Carousel>
 
@@ -165,7 +173,7 @@ const Home = ({isLoggedIn}) => {
         We are joyous to launch Prasthan Yatnam's webportal to the World.
         We hope and pray that it serves the purpose of unifying the world in this conflict ridden times and most importantly keep the youngsters close to their roots.
         Our endeavour is to 'Live and Let Live', to embrace One and all, to pick up the gems from all quarters, to remain forever open minded.
-        We at Prasthan Yatnam, understand spirituality to be Universility.Thus we are making a humble attempt to provide a soothing healthy atmosphere, free from any kind of dogma/prejudice/fanatism/cultism for a balanced holistic overall growth of.
+        We at Prasthan Yatnam, understand spirituality to be Universility. Thus we are making a humble attempt to provide a soothing healthy atmosphere, free from any kind of dogma/prejudice/fanatism/cultism for a balanced holistic overall growth of a being.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
         <Button variant="contained" sx={{ width: "13rem", transition:"0.3s",backgroundColor:"navy",marginTop:"50px",marginLeft:"20px" ,          '&:hover': {
